@@ -7,10 +7,16 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <Hero/>
-      <div className="space-y-24">
-      <Projects/>
-      <Skills/>
-      <Contact/>
+      <div className="space-y-32 py-16">
+        <section className="scroll-mt-16" id="projects">
+          <Projects/>
+        </section>
+        <section className="scroll-mt-16" id="skills">
+          <Skills/>
+        </section>
+        <section className="scroll-mt-16" id="contact">
+          <Contact/>
+        </section>
       </div>
     </main>
   );

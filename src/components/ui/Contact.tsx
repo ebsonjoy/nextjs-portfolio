@@ -1,92 +1,122 @@
+import { Mail } from 'lucide-react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+
 export default function Contact() {
-    return (
-      <section id="contact" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12">Get In Touch</h2>
-          
-          <div className="max-w-3xl mx-auto grid md:grid-cols-2 gap-8">
-            {/* Contact Info */}
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold mb-4">`Let&apos;s Connect</h3>
-              <p className="text-gray-600 mb-6">
+  return (
+    <section id="contact" className="relative min-h-screen py-24 overflow-hidden bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 -right-4 w-96 h-96 bg-gradient-to-br from-blue-400/10 to-purple-400/10 blur-3xl animate-pulse" />
+        <div className="absolute bottom-0 -left-4 w-96 h-96 bg-gradient-to-tr from-blue-400/10 to-purple-400/10 blur-3xl animate-pulse delay-1000" />
+      </div>
+
+      <div className="relative container mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-5xl font-bold mb-4">
+            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent animate-gradient">
+              Get In Touch
+            </span>
+          </h2>
+          <p className="text-xl text-gray-600 dark:text-gray-300">Let&apos;s collaborate on your next project</p>
+        </div>
+
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
+          {/* Contact Info */}
+          <div className="space-y-8">
+            <div className="group p-8 rounded-xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all">
+              <h3 className="text-2xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Let&apos;s Connect
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-8">
                 I&apos;m currently available for freelance work or full-time positions. 
                 Feel free to reach out!
               </p>
-              
-              <div className="space-y-4">
+
+              <div className="space-y-6">
                 {/* Email */}
-                <div className="flex items-center gap-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                  <a href="mailto:your.email@example.com" className="text-gray-600 hover:text-blue-600">
+                <a href="mailto:your.email@example.com" 
+                   className="group flex items-center gap-4 p-4 rounded-lg hover:bg-white/50 dark:hover:bg-gray-700/50 transition-all">
+                  <div className="p-3 rounded-full bg-blue-100 dark:bg-blue-900/50">
+                    <Mail className="w-6 h-6 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform" />
+                  </div>
+                  <span className="text-gray-600 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400">
                     your.email@example.com
-                  </a>
-                </div>
-                
+                  </span>
+                </a>
+
                 {/* GitHub */}
-                <div className="flex items-center gap-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                  </svg>
-                  <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600">
+                <a href="https://github.com/yourusername" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   className="group flex items-center gap-4 p-4 rounded-lg hover:bg-white/50 dark:hover:bg-gray-700/50 transition-all">
+                  <div className="p-3 rounded-full bg-purple-100 dark:bg-purple-900/50">
+                    <FaGithub className="w-6 h-6 text-purple-600 dark:text-purple-400 group-hover:scale-110 transition-transform" />
+                  </div>
+                  <span className="text-gray-600 dark:text-gray-300 group-hover:text-purple-600 dark:group-hover:text-purple-400">
                     github.com/yourusername
-                  </a>
-                </div>
-                
+                  </span>
+                </a>
+
                 {/* LinkedIn */}
-                <div className="flex items-center gap-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                  <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600">
+                <a href="https://linkedin.com/in/yourusername" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   className="group flex items-center gap-4 p-4 rounded-lg hover:bg-white/50 dark:hover:bg-gray-700/50 transition-all">
+                  <div className="p-3 rounded-full bg-indigo-100 dark:bg-indigo-900/50">
+                    <FaLinkedin className="w-6 h-6 text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform" />
+                  </div>
+                  <span className="text-gray-600 dark:text-gray-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">
                     linkedin.com/in/yourusername
-                  </a>
-                </div>
+                  </span>
+                </a>
               </div>
             </div>
-  
-            {/* Contact Form */}
-            <form className="space-y-4">
+          </div>
+
+          {/* Contact Form */}
+          <div className="group p-8 rounded-xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all">
+            <form className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name</label>
                 <input
                   type="text"
                   id="name"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-4 py-3 rounded-lg bg-white/50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                   placeholder="Your Name"
                 />
               </div>
-              
+
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
                 <input
                   type="email"
                   id="email"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-4 py-3 rounded-lg bg-white/50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                   placeholder="your@email.com"
                 />
               </div>
-              
+
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
                 <textarea
                   id="message"
                   rows={4}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-4 py-3 rounded-lg bg-white/50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                   placeholder="Your message..."
                 ></textarea>
               </div>
-              
+
               <button
                 type="submit"
-                className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
+                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-6 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group"
               >
+                <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
                 Send Message
               </button>
             </form>
           </div>
         </div>
-      </section>
-    )
-  }
+      </div>
+    </section>
+  );
+}
