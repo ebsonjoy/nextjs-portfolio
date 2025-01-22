@@ -21,7 +21,6 @@ const SkillCard = ({ title, skills, icon, gradientFrom, gradientTo }: SkillCardP
   <div className="relative group">
     <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
     <div className="relative p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
-      {/* Header */}
       <div className="flex items-center gap-4 mb-8">
         <div className={`p-3 rounded-xl bg-gradient-to-r ${gradientFrom} ${gradientTo} text-white`}>
           {icon}
@@ -30,8 +29,6 @@ const SkillCard = ({ title, skills, icon, gradientFrom, gradientTo }: SkillCardP
           {title}
         </h3>
       </div>
-
-      {/* Skills */}
       <div className="space-y-6">
         {skills.map((skill, index) => (
           <motion.div
@@ -68,14 +65,11 @@ const SkillCard = ({ title, skills, icon, gradientFrom, gradientTo }: SkillCardP
 const Skills = () => {
   return (
     <section id="skills" className="relative py-24 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 overflow-hidden">
-      {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-64 -right-64 w-96 h-96 bg-blue-100 dark:bg-blue-900/20 rounded-full mix-blend-multiply dark:mix-blend-lighten blur-3xl animate-pulse" />
         <div className="absolute -bottom-64 -left-64 w-96 h-96 bg-purple-100 dark:bg-purple-900/20 rounded-full mix-blend-multiply dark:mix-blend-lighten blur-3xl animate-pulse delay-1000" />
       </div>
-
       <div className="relative container mx-auto px-4">
-        {/* Section header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -91,8 +85,6 @@ const Skills = () => {
             </p>
           </motion.div>
         </div>
-
-        {/* Skills grid */}
         <div className="grid md:grid-cols-3 gap-8">
           <motion.div
             initial={{ opacity: 0, x: -20 }}

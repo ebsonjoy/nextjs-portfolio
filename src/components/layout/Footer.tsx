@@ -6,7 +6,6 @@ export default function Footer() {
 
   return (
     <footer className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900">
-      {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 -right-4 w-96 h-96 bg-gradient-to-br from-blue-600/5 to-purple-600/5 blur-3xl animate-pulse" />
         <div className="absolute bottom-0 -left-4 w-96 h-96 bg-gradient-to-tr from-blue-600/5 to-purple-600/5 blur-3xl animate-pulse delay-1000" />
@@ -14,7 +13,6 @@ export default function Footer() {
 
       <div className="relative container mx-auto px-6 py-16">
         <div className="grid md:grid-cols-3 gap-12">
-          {/* Quick Links */}
           <div className="space-y-6">
             <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               Quick Links
@@ -46,8 +44,6 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-
-          {/* Social Links */}
           <div className="space-y-6">
             <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
               Connect
@@ -86,8 +82,6 @@ export default function Footer() {
               </a>
             </div>
           </div>
-
-          {/* About */}
           <div className="space-y-6">
             <h3 className="text-2xl font-bold bg-gradient-to-r from-pink-400 to-blue-400 bg-clip-text text-transparent">
               About Me
@@ -100,8 +94,6 @@ export default function Footer() {
             </div>
           </div>
         </div>
-
-        {/* Copyright */}
         <div className="mt-16 pt-8 border-t border-gray-800/50">
           <p className="text-center text-gray-400">
             © {currentYear} Your Name. All rights reserved.

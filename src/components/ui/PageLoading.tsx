@@ -1,4 +1,3 @@
-// src/components/ui/PageLoading.tsx
 'use client'
 import { useEffect, useState } from 'react'
 
