@@ -11,8 +11,8 @@ export const projects = [
    ],
    tags: ['Node.js', 'TypeScript', 'MongoDB', 'React', 'Tailwind CSS', 'WebRTC', 'Socket.io'],
    imageUrl: '/images/dating_web.png', 
-   githubUrl: 'https://github.com/yourusername/dating-website',
-   liveUrl: 'https://your-live-demo-url.com',
+   githubUrl: 'https://github.com/ebsonjoy/Coupids_Court',
+   liveUrl: 'https://www.coupidscourt.site',
  },
  
  {
@@ -27,7 +27,7 @@ export const projects = [
    ],
      tags: ['Next.js', 'TypeScript', 'Stripe', 'Tailwind CSS'],
      imageUrl: '/images/ecommerce.jpg', 
-     githubUrl: 'https://github.com/yourusername/ecommerce',
+     githubUrl: 'https://github.com/ebsonjoy/Time-Z',
      liveUrl: 'https://your-ecommerce.vercel.app',
  },
  
@@ -43,7 +43,7 @@ export const projects = [
    ],
    tags: ['MongoDB', 'Express', 'React', 'Node.js', 'JWT'],
    imageUrl: '/images/auth-system.webp', 
-   githubUrl: 'https://github.com/yourusername/mern-auth-app',
+   githubUrl: 'https://github.com/ebsonjoy/MERN_auth',
    liveUrl: 'https://your-live-demo-url.com',
  },
  
@@ -59,8 +59,7 @@ export const projects = [
    ],
    tags: ['React', 'Authentication', 'API', 'CSS'],
    imageUrl: '/images/netflix.png',  
-   githubUrl: 'https://github.com/yourusername/netflix-clone',
-   liveUrl: 'https://your-live-demo-url.com',
+   githubUrl: 'https://github.com/ebsonjoy/Netflix_React',
  },
  
  {
@@ -75,12 +74,28 @@ export const projects = [
    ],
    tags: ['React', 'TypeScript', 'Vite', 'CSS'],
    imageUrl: '/images/task-manager.jpg', 
-   githubUrl: 'https://github.com/yourusername/todo-app',
-   liveUrl: 'https://your-live-demo-url.com',
+   githubUrl: 'https://github.com/ebsonjoy/todo-app-typescript',
+   liveUrl: 'https://todolist-plum-rho-54.vercel.app/',
  },
+
+ {
+  id: '6',
+  title: 'Weather Dashboard',
+  description: 'A weather forecasting app using OpenWeather API, providing real-time weather data and analytics.',
+  features: [
+    'Real-time weather updates',
+    'Forecast data visualization',
+    'Search by city/location',
+    'Responsive UI'
+],
+  tags: ['React', 'OpenWeather API', 'Chart.js', 'Tailwind CSS'],
+  imageUrl: '/images/weather-app.webp', 
+  githubUrl: 'https://github.com/ebsonjoy/weather-tracker-react',
+  liveUrl: 'https://weatherpluse.vercel.app',
+},
  
  {
-   id: '6',
+   id: '7',
    title: 'Node.js Login & Signup System',
    description: 'A secure user authentication system with session-based login, password hashing, and MongoDB storage.',
    features: [
@@ -91,26 +106,9 @@ export const projects = [
    ],
    tags: ['Node.js', 'Express', 'MongoDB', 'EJS', 'Session'],
    imageUrl: '/images/login-system.jpg', 
-   githubUrl: 'https://github.com/yourusername/node-auth-system',
-   liveUrl: 'https://your-live-demo-url.com',
+   githubUrl: 'https://github.com/ebsonjoy/auth-node-mongo',
+   videoDemoUrl: 'https://youtu.be/NEY08AP5w3Y',
  },
- 
- {
-     id: '7',
-     title: 'Weather Dashboard',
-     description: 'A weather forecasting app using OpenWeather API, providing real-time weather data and analytics.',
-     features: [
-       'Real-time weather updates',
-       'Forecast data visualization',
-       'Search by city/location',
-       'Responsive UI'
-   ],
-     tags: ['React', 'OpenWeather API', 'Chart.js', 'Tailwind CSS'],
-     imageUrl: '/images/weather-app.webp', 
-     githubUrl: 'https://github.com/yourusername/weather-dashboard',
-     liveUrl: 'https://your-weather-app.vercel.app',
- },
- 
  {
    id: '8',
    title: 'Simple Node.js Login System',
@@ -123,8 +121,8 @@ export const projects = [
    ],
    tags: ['Node.js', 'Express', 'Session', 'EJS'],
    imageUrl: '/images/node-login.webp', 
-   githubUrl: 'https://github.com/yourusername/node-login-system',
-   liveUrl: 'https://your-live-demo-url.com',
+   githubUrl: 'https://github.com/ebsonjoy/nodejs-auth-no-db',
+   videoDemoUrl: 'https://youtu.be/qWHotWdhP2A',
  },
  
  {
@@ -138,8 +136,8 @@ export const projects = [
    ],
    tags: ['HTML', 'CSS'],
    imageUrl: '/images/car_repair_web.webp', 
-   githubUrl: 'https://github.com/yourusername/car-repair-site',
-   liveUrl: 'https://your-live-demo-url.com',
+   githubUrl: 'https://github.com/ebsonjoy/CarRepairing',
+   liveUrl: 'https://ebsonjoy.github.io/CarRepairing/',
  },
  
  {
@@ -153,8 +151,8 @@ export const projects = [
    ],
    tags: ['HTML'],
    imageUrl: '/images/spotify.jpg', 
-   githubUrl: 'https://github.com/yourusername/spotify-clone',
-   liveUrl: 'https://your-live-demo-url.com',
+   githubUrl: 'https://github.com/ebsonjoy/Spotify-Clone',
+   liveUrl: 'https://ebsonjoy.github.io/Spotify-Clone/',
  },
  
  {
@@ -168,8 +166,8 @@ export const projects = [
      ],
      tags: ['HTML'],
      imageUrl: '/images/YouTube.jpg', 
-     githubUrl: 'https://github.com/yourusername/youtube-clone',
-     liveUrl: 'https://your-live-demo-url.com',
+     githubUrl: 'https://github.com/ebsonjoy/YouTube-Clone',
+     liveUrl: 'https://ebsonjoy.github.io/YouTube-Clone/',
  },
  ];
 

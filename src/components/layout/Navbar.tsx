@@ -8,6 +8,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [isImageHovered, setIsImageHovered] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,16 +53,32 @@ const Navbar = () => {
           <Link
             href="#home"
             className="relative group flex items-center gap-3 hover:scale-105 transition-transform duration-300"
+            onMouseEnter={() => setIsImageHovered(true)}
+            onMouseLeave={() => setIsImageHovered(false)}
           >
-            <div className="relative w-12 h-12 overflow-hidden rounded-full border-2 border-blue-500 group-hover:border-purple-500 transition-all duration-300 transform group-hover:rotate-6">
-              <Image
-                src="/images/portfolioLogo.webp"
-                alt="Logo"
-                layout="fill"
-                objectFit="cover"
-                className="transition-transform group-hover:scale-110 duration-300"
-              />
+            <div className="relative">
+              <div className={`relative w-12 h-12 overflow-hidden rounded-full border-2 border-blue-500 group-hover:border-purple-500 transition-all duration-300 transform group-hover:rotate-6 ${isImageHovered ? 'opacity-0' : 'opacity-100'}`}>
+                <Image
+                  src="/images/Ebson-Joy.jpg"
+                  alt="Ebson Joy"
+                  width={48}
+                  height={48}
+                  className="object-cover w-full h-full transition-transform group-hover:scale-110 duration-300"
+                />
+              </div>
+              
+              <div className={`absolute top-0 left-0 w-40 h-40 rounded-lg shadow-xl overflow-hidden border-2 border-purple-500 z-10 transition-all duration-300 transform ${isImageHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-75 pointer-events-none'}`} style={{ transform: isImageHovered ? 'translateY(10px)' : 'translateY(0)' }}>
+                <Image
+                  src="/images/Ebson-Joy.jpg"
+                  alt="Ebson Joy - Full View"
+                  width={160}
+                  height={160}
+                  className="object-contain w-full h-full transition-transform duration-300"
+                  priority
+                />
+              </div>
             </div>
+            
             <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-600 transition-all duration-500">
               Ebson Joy
             </span>
@@ -134,7 +151,7 @@ const Navbar = () => {
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-4 px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
+              className="block w-fit mt-4 mx-4 px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
             >
               Resume
               <ExternalLink className="w-4 h-4 transition-transform group-hover:translate-x-1" />
