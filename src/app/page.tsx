@@ -3,6 +3,7 @@ import Projects from "@/components/ui/Projects";
 import Skills from "@/components/ui/Skills";
 import About from "@/components/ui/About";
 import Contact from "@/components/ui/Contact";
+import { Analytics } from "@vercel/analytics/react"
 
 export default function Home() {
   return (
@@ -36,6 +37,7 @@ export default function Home() {
           </section>
         </div>
       </div>
+      <Analytics />
     </main>
   );
 }

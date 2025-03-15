@@ -28,7 +28,7 @@ export const projects = [
      tags: ['Next.js', 'TypeScript', 'Stripe', 'Tailwind CSS'],
      imageUrl: '/images/ecommerce.jpg', 
      githubUrl: 'https://github.com/ebsonjoy/Time-Z',
-     liveUrl: 'https://your-ecommerce.vercel.app',
+    //  liveUrl: 'https://your-ecommerce.vercel.app',
  },
  
  {
