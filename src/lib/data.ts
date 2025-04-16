@@ -9,7 +9,7 @@ export const projects = [
        'Subscription plans for premium features',
        'Secure authentication & authorization'
    ],
-   tags: ['Node.js', 'TypeScript', 'MongoDB', 'React', 'Tailwind CSS', 'WebRTC', 'Socket.io'],
+   tags: ['Node.js','Express', 'TypeScript', 'MongoDB', 'React','Redux', 'Tailwind CSS', 'WebRTC', 'Socket.io','Repository Architecture','JWT','Vite'],
    imageUrl: '/images/dating_web.png', 
    githubUrl: 'https://github.com/ebsonjoy/Coupids_Court',
    liveUrl: 'https://www.coupidscourt.site',
@@ -18,21 +18,54 @@ export const projects = [
  {
      id: '2',
      title: 'E-Commerce Platform',
-     description: 'A full-stack e-commerce platform with secure payments, product management, and a responsive UI, built using Next.js and Stripe.',
+     description: 'A full-stack e-commerce platform with secure payments, product management, and a responsive UI, built using Ejs and Razorpay.',
      features: [
        'Product listing & management',
        'Secure Stripe payment integration',
        'User authentication & authorization',
        'Responsive design with Tailwind CSS'
    ],
-     tags: ['Next.js', 'TypeScript', 'Stripe', 'Tailwind CSS'],
+     tags: ['EJS', 'node.js','Express','MongoDB','Razorpay', 'Html','CSS','MVC Architecture'],
      imageUrl: '/images/ecommerce.jpg', 
      githubUrl: 'https://github.com/ebsonjoy/Time-Z',
-    //  liveUrl: 'https://your-ecommerce.vercel.app',
+     liveUrl: 'https://watchnest-2c7j.onrender.com',
  },
+
+ {
+  id: '3',
+  title: 'Article Feeds Web App',
+  description: 'A personalized article feed platform where users can register, manage their preferences, and share articles across various categories like sports, politics, and space.',
+  features: [
+    'User registration with category preferences',
+    'Login via email or phone number',
+    'Personalized dashboard based on preferences',
+    'CRUD operations for articles',
+    'Like, dislike, block articles',
+  ],
+  tags: ['React','Redux', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS','Vite'],
+  imageUrl: '/images/article_feeds.jpg',
+  githubUrl: 'https://github.com/ebsonjoy/ReadRealm-.git',
+   liveUrl: 'https://www.readrealm.site/',
+},
+
+{
+  id: '4',
+  title: 'Aadhaar OCR System',
+  description: 'An OCR-based Aadhaar card reader built with the MERN stack that extracts and displays user details from uploaded Aadhaar card images.',
+  features: [
+    'Upload front and back Aadhaar images',
+    'Preview uploaded images',
+    'Trigger OCR process from frontend',
+    'Display extracted data in a clean layout',
+  ],
+  tags: ['Next.js','Node.js', 'Express.js', 'OCR', 'React', 'Tailwind CSS','Vite'],
+  imageUrl: '/images/Aadhaar OCR System.jpg',
+  githubUrl: 'https://github.com/ebsonjoy/aadhaar-ocr-frontend.git',
+   liveUrl: 'https://aadhaar-ocr-system-n7n5.onrender.com',
+},
  
  {
-   id: '3',
+   id: '5',
    title: 'MERN Authentication & Profile Management',
    description: 'A secure authentication and user profile management system using the MERN stack with JWT-based authentication.',
    features: [
@@ -41,14 +74,14 @@ export const projects = [
        'Profile viewing & editing',
        'Secure password hashing'
    ],
-   tags: ['MongoDB', 'Express', 'React', 'Node.js', 'JWT'],
+   tags: ['MongoDB', 'Express', 'React', 'Node.js', 'JWT','Vite'],
    imageUrl: '/images/auth-system.webp', 
    githubUrl: 'https://github.com/ebsonjoy/MERN_auth',
    liveUrl: 'https://your-live-demo-url.com',
  },
  
  {
-   id: '4',
+   id: '6',
    title: 'Netflix Clone',
    description: 'A Netflix-inspired movie streaming UI with user authentication and API integration for movie listings.',
    features: [
@@ -63,7 +96,7 @@ export const projects = [
  },
  
  {
-   id: '5',
+   id: '7',
    title: 'To-Do Web App',
    description: 'A simple and efficient task management app built with React and TypeScript, featuring local storage support.',
    features: [
@@ -79,7 +112,7 @@ export const projects = [
  },
 
  {
-  id: '6',
+  id: '8',
   title: 'Weather Dashboard',
   description: 'A weather forecasting app using OpenWeather API, providing real-time weather data and analytics.',
   features: [
@@ -95,7 +128,7 @@ export const projects = [
 },
  
  {
-   id: '7',
+   id: '9',
    title: 'Node.js Login & Signup System',
    description: 'A secure user authentication system with session-based login, password hashing, and MongoDB storage.',
    features: [
@@ -110,7 +143,7 @@ export const projects = [
    videoDemoUrl: 'https://youtu.be/NEY08AP5w3Y',
  },
  {
-   id: '8',
+   id: '10',
    title: 'Simple Node.js Login System',
    description: 'A basic authentication system using Node.js and Express with session-based login and protected routes.',
    features: [
@@ -126,7 +159,7 @@ export const projects = [
  },
  
  {
-   id: '9',
+   id: '11',
    title: 'Car Repairing Website',
    description: 'A static car repair service website designed for showcasing services and contact information.',
    features: [
@@ -141,7 +174,7 @@ export const projects = [
  },
  
  {
-   id: '10',
+   id: '12',
    title: 'Spotify Clone',
    description: 'A static Spotify UI clone built using HTML, designed as an early project to practice web design.',
    features: [
@@ -156,7 +189,7 @@ export const projects = [
  },
  
  {
-     id: '11',
+     id: '13',
      title: 'YouTube Clone',
      description: 'A static YouTube clone created to practice webpage structuring with HTML.',
      features: [

@@ -1,10 +1,18 @@
+'use client'
 import React from 'react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { Mail, ExternalLink, Code2, Server, Layout } from 'lucide-react';
 
 const Hero = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section className="min-h-screen relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900">
+    <section id="home" className="min-h-screen relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 -right-4 w-96 h-96 bg-gradient-to-br from-blue-400/10 to-purple-400/10 blur-3xl animate-pulse" />
         <div className="absolute bottom-0 -left-4 w-96 h-96 bg-gradient-to-tr from-blue-400/10 to-purple-400/10 blur-3xl animate-pulse delay-1000" />
@@ -45,11 +53,17 @@ const Hero = () => {
             </div>
           </div>
           <div className="flex flex-wrap gap-4 justify-center mb-12">
-            <button className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center gap-2">
+            <button 
+              onClick={() => scrollToSection('projects')}
+              className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
+            >
               <ExternalLink className="w-5 h-5 group-hover:rotate-12 transition-transform" />
               View Projects
             </button>
-            <button className="group bg-white dark:bg-gray-800 border-2 border-blue-600 text-blue-600 dark:text-blue-400 px-8 py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center gap-2">
+            <button 
+              onClick={() => scrollToSection('contact')}
+              className="group bg-white dark:bg-gray-800 border-2 border-blue-600 text-blue-600 dark:text-blue-400 px-8 py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
+            >
               <Mail className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               Contact Me
             </button>
@@ -68,7 +82,7 @@ const Hero = () => {
               className="group p-2 rounded-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
               <FaLinkedin className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:scale-110 group-hover:text-blue-600 transition-all" />
             </a>
-            <a  href="ebsonjoy721@gmail.com"
+            <a  href="mailto:ebsonjoy721@gmail.com"
              rel="noopener noreferrer"
              className="group p-2 rounded-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
               <Mail className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:scale-110 group-hover:text-blue-600 transition-all" />
