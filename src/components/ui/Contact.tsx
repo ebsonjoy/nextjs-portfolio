@@ -38,11 +38,17 @@ export default function Contact() {
       return;
     }
 
+    const name = formData.get('name')?.toString() || '';
+    const email = formData.get('email')?.toString() || '';
+    const message = formData.get('message')?.toString() || '';
+
     try {
-      const response = await fetch('https://formspree.io/f/xpwwnayd', {
+      const response = await fetch('https://portfolio-contact-api-lwkd.onrender.com/api/contact', {
         method: 'POST',
-        body: formData,
-        headers: { Accept: 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, message }),
       });
 
       if (response.ok) {
