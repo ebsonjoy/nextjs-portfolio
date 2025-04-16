@@ -148,7 +148,7 @@ const Navbar = () => {
               </Link>
             ))}
             <a
-              href="/resume.pdf"
+              href="/Ebson_Joy.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="block w-fit mt-4 mx-4 px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
