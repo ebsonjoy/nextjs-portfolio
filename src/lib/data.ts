@@ -28,7 +28,7 @@ export const projects = [
      tags: ['EJS', 'node.js','Express','MongoDB','Razorpay', 'Html','CSS','MVC Architecture'],
      imageUrl: '/images/ecommerce.jpg', 
      githubUrl: 'https://github.com/ebsonjoy/Time-Z',
-     liveUrl: 'https://watchnest-2c7j.onrender.com',
+     liveUrl: 'https://ticknest.store',
  },
 
  {
