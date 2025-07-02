@@ -77,7 +77,7 @@ export const projects = [
    tags: ['MongoDB', 'Express', 'React', 'Node.js', 'JWT','Vite'],
    imageUrl: '/images/auth-system.webp', 
    githubUrl: 'https://github.com/ebsonjoy/MERN_auth',
-   liveUrl: 'https://your-live-demo-url.com',
+  //  liveUrl: 'https://your-live-demo-url.com',
  },
  
  {
