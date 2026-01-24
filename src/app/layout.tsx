@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
@@ -7,6 +8,16 @@ import SmoothScroll from "@/components/ui/SmoothScroll";
 import GlobalBackground from "@/components/layout/GlobalBackground";
 
 const inter = Inter({ subsets: ['latin'] })
+
+export const metadata: Metadata = {
+  title: "Ebson Joy | Portfolio",
+  description: "Next.js Portfolio of Ebson Joy",
+  icons: {
+    icon: "/images/Ebson-Joy.jpg",
+    shortcut: "/images/Ebson-Joy.jpg",
+    apple: "/images/Ebson-Joy.jpg",
+  },
+};
 
 export default function RootLayout({
   children,
