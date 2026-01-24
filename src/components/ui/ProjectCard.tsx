@@ -1,7 +1,7 @@
 'use client'
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { ExternalLink, ArrowUpRight, Code2, Sparkles } from 'lucide-react';
+import { ExternalLink, ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
 import { FaGithub } from 'react-icons/fa';
 
@@ -15,9 +15,11 @@ interface ProjectCardProps {
   liveUrl?: string;
   videoDemoUrl?: string;
   features: string[];
+  onOpenDetails: () => void;
 }
 
 const ProjectCard = ({
+  id,
   title,
   description,
   tags,
@@ -26,6 +28,7 @@ const ProjectCard = ({
   liveUrl,
   videoDemoUrl,
   features,
+  onOpenDetails,
 }: ProjectCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
@@ -71,6 +74,7 @@ const ProjectCard = ({
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onClick={onOpenDetails}
       style={{
         rotateX,
         rotateY,
@@ -80,112 +84,109 @@ const ProjectCard = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="group relative flex flex-col h-full bg-white dark:bg-gray-800/50 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 perspective-1000"
+      className="group relative h-[400px] w-full rounded-3xl overflow-hidden cursor-pointer perspective-1000 bg-navy-light"
     >
+      {/* Background Image */}
       <div 
-        className="relative h-48 overflow-hidden"
-        style={{ transform: "translateZ(20px)" }}
+        className="absolute inset-0 z-0 transition-transform duration-700 group-hover:scale-110"
+        style={{ transform: "translateZ(0px)" }}
       >
         <Image
           src={imageUrl}
           alt={title}
-          layout="fill"
-          objectFit="cover"
-          className="transform group-hover:scale-110 transition-transform duration-700"
+          fill
+          className="object-cover"
+          priority={false}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-navy/20 to-navy/90 opacity-60 group-hover:opacity-90 transition-opacity duration-500" />
       </div>
 
+      {/* Content Overlay */}
       <div 
-        className="flex flex-col flex-grow p-6"
-        style={{ transform: "translateZ(30px)" }}
+        className="absolute inset-0 z-10 flex flex-col justify-end p-8"
+        style={{ transform: "translateZ(20px)" }}
       >
-        <h3 className="text-2xl font-bold mb-3 group-hover:bg-gradient-to-r from-blue-600 to-purple-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
-          {title}
-        </h3>
-
-        <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">
-          {description}
-        </p>
-
-        <div className="mb-4">
-          <div className="flex items-center gap-2 mb-2">
-            <Sparkles className="w-4 h-4 text-purple-500" />
-            <span className="text-sm font-semibold text-purple-600 dark:text-purple-400">
-              Key Features
-            </span>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {features.map((feature) => (
-              <span
-                key={feature}
-                className="px-3 py-1 text-sm font-medium bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 rounded-full transform hover:scale-105 transition-transform duration-300"
-              >
-                {feature}
-              </span>
-            ))}
-          </div>
+        {/* Top: Tech Tags (Hidden initially, slide down) */}
+        <div className="absolute top-6 right-6 flex flex-wrap justify-end gap-2 opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 delay-100">
+           {tags.slice(0, 3).map((tag, i) => (
+             <span key={i} className="px-3 py-1 text-xs font-bold bg-navy/80 backdrop-blur-md text-primary rounded-full border border-primary/20 shadow-lg">
+               {tag}
+             </span>
+           ))}
         </div>
 
-        <div className="mb-4">
-          <div className="flex items-center gap-2 mb-2">
-            <Code2 className="w-4 h-4 text-blue-500" />
-            <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">
-              Tech Stack
-            </span>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {tags.map((tag) => (
-              <span
-                key={tag}
-                className="px-3 py-1 text-sm font-medium bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 rounded-full transform hover:scale-105 transition-transform duration-300"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
+        {/* Bottom Content */}
+        <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+          <h3 className="text-3xl font-bold text-white mb-2 leading-tight">
+            {title}
+          </h3>
+          
+          <div className="h-0 opacity-0 group-hover:h-auto group-hover:opacity-100 transition-all duration-500 overflow-hidden">
+             <p className="text-text-secondary text-base mb-6 line-clamp-3">
+               {description}
+             </p>
 
-        <div 
-          className="flex items-center gap-4 mt-auto pt-4 border-t border-gray-100 dark:border-gray-700"
-          style={{ transform: "translateZ(40px)" }}
-        >
-          {githubUrl && (
-            <a
-              href={getValidUrl(githubUrl)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group/link"
-            >
-              <FaGithub className="w-5 h-5" />
-              <span className="font-medium">Code</span>
-              <ArrowUpRight className="w-4 h-4 opacity-0 group-hover/link:opacity-100 transform group-hover/link:translate-x-1 -translate-y-1 transition-all" />
-            </a>
-          )}
-          {liveUrl && (
-            <a
-              href={getValidUrl(liveUrl)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group/link"
-            >
-              <ExternalLink className="w-5 h-5" />
-              <span className="font-medium">Live Demo</span>
-              <ArrowUpRight className="w-4 h-4 opacity-0 group-hover/link:opacity-100 transform group-hover/link:translate-x-1 -translate-y-1 transition-all" />
-            </a>
-          )}
-          {videoDemoUrl && (
-            <a
-              href={getValidUrl(videoDemoUrl)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group/link"
-            >
-              <ExternalLink className="w-5 h-5" />
-              <span className="font-medium">Demo Video</span>
-              <ArrowUpRight className="w-4 h-4 opacity-0 group-hover/link:opacity-100 transform group-hover/link:translate-x-1 -translate-y-1 transition-all" />
-            </a>
-          )}
+            <div className="space-y-3 mb-4">
+              <div className="flex flex-wrap gap-2">
+                {features.slice(0, 2).map((feature, i) => (
+                  <span key={i} className="text-xs text-text-secondary border border-white/10 px-2 py-0.5 rounded-md">
+                    {feature}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4 pt-4 border-t border-white/10">
+                {githubUrl && (
+                    <a 
+                      href={getValidUrl(githubUrl)} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="p-2 bg-white/10 rounded-full hover:bg-primary hover:text-navy transition-colors"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                        <FaGithub className="w-5 h-5" />
+                    </a>
+                )}
+                {liveUrl && (
+                    <a 
+                      href={getValidUrl(liveUrl)} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="p-2 bg-white/10 rounded-full hover:bg-primary hover:text-navy transition-colors"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                        <ExternalLink className="w-5 h-5" />
+                    </a>
+                )}
+                 {videoDemoUrl && (
+                    <a 
+                      href={getValidUrl(videoDemoUrl)} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="p-2 bg-white/10 rounded-full hover:bg-primary hover:text-navy transition-colors"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                        <ArrowUpRight className="w-5 h-5 rotate-90" />
+                    </a>
+                )}
+                 <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onOpenDetails();
+                  }}
+                  className="ml-auto flex items-center gap-2 text-primary font-bold tracking-wide hover:gap-3 transition-all"
+                >
+                    READ MORE <ArrowUpRight className="w-4 h-4" />
+                </button>
+            </div>
+          </div>
+
+           {/* Initial "Details" hint */}
+           <div className="flex items-center gap-2 mt-2 group-hover:hidden transition-opacity duration-300">
+              <span className="text-primary text-sm font-medium tracking-widest uppercase">View Details</span>
+              <ArrowUpRight className="w-4 h-4 text-primary" />
+           </div>
         </div>
       </div>
     </motion.div>

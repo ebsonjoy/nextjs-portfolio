@@ -1,103 +1,61 @@
-import {  Mail, Home, Code2, FolderGit2, MessageSquare } from 'lucide-react';
+import { ArrowUpRight, Mail } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900">
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 -right-4 w-96 h-96 bg-gradient-to-br from-blue-600/5 to-purple-600/5 blur-3xl animate-pulse" />
-        <div className="absolute bottom-0 -left-4 w-96 h-96 bg-gradient-to-tr from-blue-600/5 to-purple-600/5 blur-3xl animate-pulse delay-1000" />
-      </div>
+    <footer className="relative bg-navy pt-24 pb-12 overflow-hidden">
+      {/* Decorative gradient */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="relative container mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-3 gap-12">
-          <div className="space-y-6">
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              Quick Links
-            </h3>
-            <ul className="space-y-4">
-              <li>
-                <a href="#home" className="group flex items-center gap-3 text-gray-300 hover:text-white transition-colors">
-                  <Home className="w-5 h-5 text-blue-400 group-hover:scale-110 transition-transform" />
-                  <span>Home</span>
-                </a>
-              </li>
-              <li>
-                <a href="#skills" className="group flex items-center gap-3 text-gray-300 hover:text-white transition-colors">
-                  <Code2 className="w-5 h-5 text-purple-400 group-hover:scale-110 transition-transform" />
-                  <span>Skills</span>
-                </a>
-              </li>
-              <li>
-                <a href="#projects" className="group flex items-center gap-3 text-gray-300 hover:text-white transition-colors">
-                  <FolderGit2 className="w-5 h-5 text-indigo-400 group-hover:scale-110 transition-transform" />
-                  <span>Projects</span>
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="group flex items-center gap-3 text-gray-300 hover:text-white transition-colors">
-                  <MessageSquare className="w-5 h-5 text-pink-400 group-hover:scale-110 transition-transform" />
-                  <span>Contact</span>
-                </a>
-              </li>
-            </ul>
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-start mb-20 gap-12">
+          
+          {/* Main CTA */}
+          <div className="max-w-2xl">
+            <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight">
+              Let&apos;s make something <br />
+              <span className="text-primary italic">amazing</span> together.
+            </h2>
+            <a 
+              href="mailto:ebsonjoy721@gmail.com"
+              className="inline-flex items-center gap-4 text-2xl md:text-3xl text-text-secondary hover:text-white transition-colors group cursor-pointer"
+            >
+              <span className="border-b border-white/20 group-hover:border-primary pb-2 transition-colors">ebsonjoy721@gmail.com</span>
+              <ArrowUpRight className="w-8 h-8 text-primary group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
+            </a>
           </div>
-          <div className="space-y-6">
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Connect
-            </h3>
-            <div className="space-y-4">
-              <a 
-                href="https://github.com/yourusername" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="group flex items-center gap-3 text-gray-300 hover:text-white transition-colors"
-              >
-                <div className="p-2 rounded-lg bg-gray-800/50 group-hover:bg-gray-700/50 transition-colors">
-                  <FaGithub className="w-5 h-5 text-blue-400 group-hover:scale-110 transition-transform" />
-                </div>
-                <span>Follow on GitHub</span>
-              </a>
-              <a 
-                href="https://linkedin.com/in/yourusername" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="group flex items-center gap-3 text-gray-300 hover:text-white transition-colors"
-              >
-                <div className="p-2 rounded-lg bg-gray-800/50 group-hover:bg-gray-700/50 transition-colors">
-                  <FaLinkedin className="w-5 h-5 text-purple-400 group-hover:scale-110 transition-transform" />
-                </div>
-                <span>Connect on LinkedIn</span>
-              </a>
-              <a 
-                href="mailto:your.email@example.com" 
-                className="group flex items-center gap-3 text-gray-300 hover:text-white transition-colors"
-              >
-                <div className="p-2 rounded-lg bg-gray-800/50 group-hover:bg-gray-700/50 transition-colors">
-                  <Mail className="w-5 h-5 text-pink-400 group-hover:scale-110 transition-transform" />
-                </div>
-                <span>Send an Email</span>
-              </a>
-            </div>
-          </div>
-          <div className="space-y-6">
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-pink-400 to-blue-400 bg-clip-text text-transparent">
-              About Me
-            </h3>
-            <div className="p-6 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 hover:shadow-xl transition-all">
-              <p className="text-gray-300 leading-relaxed">
-                Full Stack Developer specializing in creating modern web applications
-                with a focus on user experience and clean code.
-              </p>
-            </div>
+
+          {/* Social Links */}
+          <div className="flex flex-col gap-4">
+             <p className="text-text-muted uppercase tracking-widest text-sm font-semibold mb-2">Socials</p>
+             <div className="flex gap-4">
+                <a href="https://github.com/ebsonjoy" target="_blank" className="p-4 rounded-full bg-white/5 hover:bg-primary hover:text-navy text-white transition-all duration-300">
+                    <FaGithub className="w-6 h-6" />
+                </a>
+                <a href="https://linkedin.com/in/ebson-joy" target="_blank" className="p-4 rounded-full bg-white/5 hover:bg-primary hover:text-navy text-white transition-all duration-300">
+                    <FaLinkedin className="w-6 h-6" />
+                </a>
+                <a href="mailto:ebsonjoy721@gmail.com" className="p-4 rounded-full bg-white/5 hover:bg-primary hover:text-navy text-white transition-all duration-300">
+                     <Mail className="w-6 h-6" />
+                </a>
+             </div>
           </div>
         </div>
-        <div className="mt-16 pt-8 border-t border-gray-800/50">
-          <p className="text-center text-gray-400">
-            © {currentYear} Your Name. All rights reserved.
-          </p>
+
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+           <div className="flex gap-8">
+              <a href="#home" className="text-text-secondary hover:text-white text-sm transition-colors">Home</a>
+              <a href="#about" className="text-text-secondary hover:text-white text-sm transition-colors">About</a>
+              <a href="#projects" className="text-text-secondary hover:text-white text-sm transition-colors">Projects</a>
+           </div>
+
+           <p className="text-text-muted text-sm">
+             © {currentYear} Ebson Joy. Designed & Built in Next.js
+           </p>
         </div>
       </div>
     </footer>
