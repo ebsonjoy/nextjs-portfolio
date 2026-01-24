@@ -62,7 +62,7 @@ const MagneticButton = ({ children, onClick, className }: { children: React.Reac
   );
 };
 
-const FloatingIcon = ({ Icon, i, smoothMouseX, smoothMouseY }: { Icon: any, i: number, smoothMouseX: MotionValue<number>, smoothMouseY: MotionValue<number> }) => {
+const FloatingIcon = ({ Icon, i, smoothMouseX, smoothMouseY }: { Icon: React.ElementType, i: number, smoothMouseX: MotionValue<number>, smoothMouseY: MotionValue<number> }) => {
   const x = useTransform(smoothMouseX, [-500, 500], [15 * (i + 1), -15 * (i + 1)]);
   const y = useTransform(smoothMouseY, [-500, 500], [15 * (i + 1), -15 * (i + 1)]);
 
