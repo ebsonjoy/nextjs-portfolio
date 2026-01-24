@@ -5,16 +5,18 @@ import { motion } from 'framer-motion';
 // Define the tech stack nodes with balanced hexagonal positions
 // Center: 50, 50. Radius approx 35-40% 
 const nodes = [
-  { id: 'next', label: 'Next.js', x: 50, y: 15 },      // Top
-  { id: 'ts', label: 'TypeScript', x: 85, y: 32 },     // Top Right
-  { id: 'node', label: 'Node.js', x: 85, y: 68 },      // Bottom Right
-  { id: 'mongo', label: 'MongoDB', x: 50, y: 85 },     // Bottom
-  { id: 'react', label: 'React', x: 15, y: 68 },       // Bottom Left
-  { id: 'js', label: 'JavaScript', x: 15, y: 32 },     // Top Left
+  { id: 'next', label: 'Next.js', x: 50, y: 10 },      // Top
+  { id: 'ts', label: 'TypeScript', x: 80, y: 22 },     // Top Right
+  { id: 'node', label: 'Node.js', x: 92, y: 50 },      // Mid Right
+  { id: 'sql', label: 'SQL', x: 80, y: 78 },           // Bottom Right
+  { id: 'mongo', label: 'MongoDB', x: 50, y: 90 },     // Bottom
+  { id: 'nestjs', label: 'NestJS', x: 20, y: 78 },     // Bottom Left
+  { id: 'react', label: 'React', x: 8, y: 50 },        // Mid Left
+  { id: 'js', label: 'JavaScript', x: 20, y: 22 },     // Top Left
 ];
 
 // Define the sequential circuit path -> loop matching the visual circle
-const circuitSequence = ['next', 'ts', 'node', 'mongo', 'react', 'js'];
+const circuitSequence = ['next', 'ts', 'node', 'sql', 'mongo', 'nestjs', 'react', 'js'];
 
 const HeroAnimation = () => {
   const [activeNodeIndex, setActiveNodeIndex] = useState(0);

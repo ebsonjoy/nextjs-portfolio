@@ -48,7 +48,7 @@ const Navbar = () => {
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo / Brand */}
         <Link href="#home" className="flex items-center gap-3">
-            <div className="relative w-10 h-10 overflow-hidden rounded-full border-2 border-primary/50 group">
+            <div className="relative w-10 h-10 overflow-hidden rounded-full border-2 border-primary/50 group transition-all duration-300 hover:scale-[2.5] hover:border-primary hover:shadow-glow z-10 origin-left">
                 <Image
                     src="/images/Ebson-Joy.jpg"
                     alt="Ebson Joy"

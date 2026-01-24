@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ebson Joy | Professional Portfolio
 
-## Getting Started
+A high-performance, visually stunning portfolio built with **Next.js 15**, **TypeScript**, and **Framer Motion**. This project showcases a modern approach to web development with a focus on smooth animations, responsive design, and technical SEO.
 
-First, run the development server:
+![Portfolio Preview](/src/app/opengraph-image.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Key Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+-   **Next.js 15 (App Router)**: Utilizing React 19 and the latest Next.js features for optimal performance.
+-   **Sophisticated Animations**: 
+    -   Interactive Hero Section with a dynamic "Tech Circuit" (NestJS, Next.js, Node.js, SQL, etc.).
+    -   Fluid page transitions and scroll-linked animations using Framer Motion.
+    -   Enhanced Navbar with 2.5x scaling profile photo hover effect.
+-   **Technical SEO & Metadata**:
+    -   Custom Favicon (`Ebson-Joy.jpg`) and Open Graph social previews.
+    -   Dynamic Sitemap and optimized `robots.txt`.
+    -   SEO-friendly meta tags including Open Graph (LinkedIn/Twitter) and keywords.
+-   **Site Infrastructure**:
+    -   Custom **Loading**, **Error**, and **Not-Found** pages with matching aesthetics.
+    -   Smooth scrolling with Lenis.
+-   **Modern UI**: High-end dark theme with emerald green accents and glassmorphism.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠 Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+-   **Frontend**: Next.js 15, React 19, TypeScript
+-   **Backend**: Node.js, NestJS, SQL, MongoDB
+-   **Styling**: Tailwind CSS
+-   **Animations**: Framer Motion
+-   **Icons**: Lucide React, React Icons
+-   **Accessibility**: Semantic HTML and responsive utilities
 
-## Learn More
+## 🚀 Live Site
 
-To learn more about Next.js, take a look at the following resources:
+Check out the live portfolio: [ebson.online](https://www.ebson.online)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📦 Getting Started
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Prerequisites
 
-## Deploy on Vercel
+-   Node.js 18+ 
+-   npm / yarn / pnpm
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Installation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/EbsonJoy/portfolio.git
+    ```
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
+3.  Run the development server:
+    ```bash
+    npm run dev
+    ```
+
+Open [https://www.ebson.online](https://www.ebson.online) or [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## 📄 License
+
+This project is personal and for portfolio purposes only.

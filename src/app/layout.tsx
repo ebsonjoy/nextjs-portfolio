@@ -11,11 +11,50 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: "Ebson Joy | Portfolio",
-  description: "Next.js Portfolio of Ebson Joy",
+  description: "Ebson Joy's Professional Portfolio - Full Stack Developer specializing in Next.js, React, and Node.js.",
+  keywords: [
+    "Ebson Joy",
+    "Portfolio",
+    "Full Stack Developer",
+    "Next.js Developer",
+    "React Developer",
+    "Node.js",
+    "TypeScript",
+    "Web Development",
+    "UI/UX Design",
+    "SQL",
+    "MongoDB"
+  ],
+  authors: [{ name: "Ebson Joy" }],
+  creator: "Ebson Joy",
+  metadataBase: new URL("https://www.ebson.online"), 
   icons: {
     icon: "/images/Ebson-Joy.jpg",
     shortcut: "/images/Ebson-Joy.jpg",
     apple: "/images/Ebson-Joy.jpg",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://www.ebson.online",
+    title: "Ebson Joy | Full Stack Portfolio",
+    description: "Explore the professional work and skills of Ebson Joy, a passionate Full Stack Developer.",
+    siteName: "Ebson Joy Portfolio",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Ebson Joy Portfolio Preview",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ebson Joy | Full Stack Portfolio",
+    description: "Ebson Joy's Professional Portfolio - Full Stack Developer specializing in Next.js, React, and Node.js.",
+    images: ["/opengraph-image.png"],
+    creator: "@ebsonjoy", // Placeholder
   },
 };
 

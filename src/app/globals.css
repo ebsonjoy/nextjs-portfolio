@@ -3,16 +3,29 @@
 @tailwind utilities;
 
 :root {
-  --background: #0F1A14;
-  --foreground: #EAF5EF;
+  --background: #010403;
+  --foreground: #F0F9F4;
 }
 
 body {
   color: var(--foreground);
-  background: linear-gradient(to bottom, #0F1A14, #16261D, #0F1A14);
+  background: linear-gradient(-45deg, #010403, #08120C, #050208, #020604);
+  background-size: 400% 400%;
+  animation: backgroundAnimation 25s ease-balanced infinite;
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
   min-height: 100vh;
+}
+
+@keyframes backgroundAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes ease-balanced {
+    0%, 100% { transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+    50% { transition-timing-function: cubic-bezier(0, 0, 0.2, 1); }
 }
 
 @layer base {

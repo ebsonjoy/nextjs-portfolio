@@ -12,7 +12,7 @@ export const projects = [
    tags: ['Node.js','Express', 'TypeScript', 'MongoDB', 'React','Redux', 'Tailwind CSS', 'WebRTC', 'Socket.io','Repository Architecture','JWT','Vite'],
    imageUrl: '/images/dating_web.png', 
    githubUrl: 'https://github.com/ebsonjoy/Coupids_Court',
-   liveUrl: 'https://www.coupidscourt.site',
+  //  liveUrl: 'https://www.coupidscourt.site',
  },
  
  {
@@ -28,7 +28,7 @@ export const projects = [
      tags: ['EJS', 'node.js','Express','MongoDB','Razorpay', 'Html','CSS','MVC Architecture'],
      imageUrl: '/images/ecommerce.jpg', 
      githubUrl: 'https://github.com/ebsonjoy/Time-Z',
-     liveUrl: 'https://ticknest.store',
+    //  liveUrl: 'https://ticknest.store',
  },
 
  {
@@ -45,7 +45,7 @@ export const projects = [
   tags: ['React','Redux', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS','Vite'],
   imageUrl: '/images/article_feeds.jpg',
   githubUrl: 'https://github.com/ebsonjoy/ReadRealm-.git',
-   liveUrl: 'https://www.readrealm.site/',
+  //  liveUrl: 'https://www.readrealm.site/',
 },
 
 {
@@ -61,7 +61,7 @@ export const projects = [
   tags: ['Next.js','Node.js', 'Express.js', 'OCR', 'React', 'Tailwind CSS','Vite'],
   imageUrl: '/images/Aadhaar OCR System.jpg',
   githubUrl: 'https://github.com/ebsonjoy/aadhaar-ocr-frontend.git',
-   liveUrl: 'https://aadhaar-ocr-system-n7n5.onrender.com',
+  //  liveUrl: 'https://aadhaar-ocr-system-n7n5.onrender.com',
 },
  
  {
