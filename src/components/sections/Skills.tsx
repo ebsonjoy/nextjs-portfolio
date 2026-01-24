@@ -1,17 +1,17 @@
 'use client';
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { 
   SiReact, SiTypescript, SiNextdotjs, SiTailwindcss, SiRedux,
-  SiNodedotjs, SiExpress, SiMongodb, SiJsonwebtokens, SiSocketdotio, SiGit,
-  SiPostman, SiAmazonwebservices, SiHtml5, SiCss3, SiFirebase, SiBootstrap, SiSupabase, SiMysql, SiVercel, SiNestjs,
+  SiNodedotjs, SiExpress, SiMongodb, SiSocketdotio, SiGit,
+  SiPostman, SiAmazonwebservices, SiHtml5, SiCss3, SiFirebase, SiBootstrap, SiSupabase, SiVercel, SiNestjs,
   SiStripe, SiRazorpay
 } from 'react-icons/si';
-import { Layout, Server, Terminal, Cpu, Zap, Code, Shield, Globe, Database, CreditCard } from 'lucide-react';
+import { Layout, Server, Terminal, Cpu, Zap, Code, Shield, Globe, Database } from 'lucide-react';
 import { skills } from '@/lib/data';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 
-const iconMap: { [key: string]: any } = {
+const iconMap: { [key: string]: React.ElementType } = {
   "React": SiReact,
   "TypeScript": SiTypescript,
   "Next.js": SiNextdotjs,
@@ -46,7 +46,7 @@ interface Skill {
   level: number;
 }
 
-const SkillCard = ({ name, icon: Icon }: { name: string, icon: any }) => (
+const SkillCard = ({ name, icon: Icon }: { name: string, icon: React.ElementType | undefined }) => (
   <motion.div
     whileHover={{ y: -5, scale: 1.05 }}
     className="group relative p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/50 transition-all duration-300 backdrop-blur-sm flex flex-col items-center justify-center gap-3"
@@ -79,7 +79,7 @@ const slideInRight = {
   }
 };
 
-const SkillCategory = ({ title, icon, skills, variant }: { title: string, icon: React.ReactNode, skills: Skill[], variant: any }) => (
+const SkillCategory = ({ title, icon, skills, variant }: { title: string, icon: React.ReactNode, skills: Skill[], variant: Variants }) => (
   <motion.div 
     variants={variant}
     className="col-span-1"

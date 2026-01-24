@@ -19,7 +19,6 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({
-  id,
   title,
   description,
   tags,

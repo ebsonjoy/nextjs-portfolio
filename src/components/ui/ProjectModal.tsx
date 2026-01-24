@@ -5,8 +5,20 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Github, CheckCircle2, Globe, Video } from 'lucide-react';
 import Image from 'next/image';
 
+interface Project {
+  id: string;
+  title: string;
+  description: string;
+  tags: string[];
+  imageUrl: string;
+  githubUrl: string;
+  liveUrl?: string;
+  videoDemoUrl?: string;
+  features: string[];
+}
+
 interface ProjectModalProps {
-  project: any | null;
+  project: Project | null;
   isOpen: boolean;
   onClose: () => void;
 }

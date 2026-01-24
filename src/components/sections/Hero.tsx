@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
-import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion';
-import { Mail, ArrowRight, Github, Linkedin, Download, Code, Cpu, Globe, Rocket } from 'lucide-react';
-import { fadeInUp, staggerContainer, scaleIn } from '@/lib/animations';
+import { motion, useTransform, useSpring, useMotionValue, MotionValue } from 'framer-motion';
+import { Mail, ArrowRight, Github, Linkedin, Code, Cpu, Globe, Rocket } from 'lucide-react';
+import { fadeInUp, staggerContainer } from '@/lib/animations';
 import HeroAnimation from './HeroAnimation';
 
 // --- Helper Components for "Wow" Effect ---
@@ -62,6 +62,38 @@ const MagneticButton = ({ children, onClick, className }: { children: React.Reac
   );
 };
 
+const FloatingIcon = ({ Icon, i, smoothMouseX, smoothMouseY }: { Icon: any, i: number, smoothMouseX: MotionValue<number>, smoothMouseY: MotionValue<number> }) => {
+  const x = useTransform(smoothMouseX, [-500, 500], [15 * (i + 1), -15 * (i + 1)]);
+  const y = useTransform(smoothMouseY, [-500, 500], [15 * (i + 1), -15 * (i + 1)]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ 
+          opacity: [0.1, 0.3, 0.1],
+          y: [0, -40, 0],
+          x: [0, 20, 0],
+          rotate: [0, 10, 0]
+      }}
+      transition={{
+          duration: 8 + i * 2,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: i * 1.5
+      }}
+      style={{
+          position: 'absolute',
+          top: `${20 + i * 20}%`,
+          left: `${10 + i * 15}%`,
+          x,
+          y
+      }}
+    >
+      <Icon className="w-12 h-12 text-primary/20" />
+    </motion.div>
+  );
+};
+
 const Hero = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -94,31 +126,13 @@ const Hero = () => {
       {/* Floating Decorative Elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {[Code, Cpu, Globe, Rocket].map((Icon, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0 }}
-            animate={{ 
-                opacity: [0.1, 0.3, 0.1],
-                y: [0, -40, 0],
-                x: [0, 20, 0],
-                rotate: [0, 10, 0]
-            }}
-            transition={{
-                duration: 8 + i * 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: i * 1.5
-            }}
-            style={{
-                position: 'absolute',
-                top: `${20 + i * 20}%`,
-                left: `${10 + i * 15}%`,
-                x: useTransform(smoothMouseX, [-500, 500], [15 * (i + 1), -15 * (i + 1)]),
-                y: useTransform(smoothMouseY, [-500, 500], [15 * (i + 1), -15 * (i + 1)])
-            }}
-          >
-            <Icon className="w-12 h-12 text-primary/20" />
-          </motion.div>
+          <FloatingIcon 
+            key={i} 
+            Icon={Icon} 
+            i={i} 
+            smoothMouseX={smoothMouseX} 
+            smoothMouseY={smoothMouseY} 
+          />
         ))}
       </div>
 

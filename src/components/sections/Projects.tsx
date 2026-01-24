@@ -4,11 +4,23 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ProjectCard from "@/components/ui/ProjectCard";
 import ProjectModal from "@/components/ui/ProjectModal";
 import { projects } from '@/lib/data';
-import { Filter, Sparkles } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
+
+interface Project {
+    id: string;
+    title: string;
+    description: string;
+    tags: string[];
+    imageUrl: string;
+    githubUrl: string;
+    liveUrl?: string;
+    videoDemoUrl?: string;
+    features: string[];
+}
 
 const Projects = () => {
   const [selectedTag, setSelectedTag] = useState('All');
-  const [selectedProject, setSelectedProject] = useState<any | null>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   
   const allTags = ['All', ...new Set(projects.flatMap(project => project.tags))];
   const filteredProjects = selectedTag === 'All' 

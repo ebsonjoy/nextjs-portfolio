@@ -73,7 +73,14 @@ const timelineData = [
   }
 ];
 
-const TimelineItem = ({ item, index }: { item: any, index: number }) => {
+interface TimelineEntry {
+  type: string;
+  title: string;
+  icon: React.ReactNode;
+  content: React.ReactNode;
+}
+
+const TimelineItem = ({ item, index }: { item: TimelineEntry, index: number }) => {
   const isLeft = index % 2 === 0;
 
   return (
