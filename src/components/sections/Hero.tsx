@@ -1,100 +1,66 @@
 'use client';
 import React from 'react';
 import { motion, useTransform, useSpring, useMotionValue, MotionValue } from 'framer-motion';
-import { Mail, ArrowRight, Github, Linkedin, Code, Cpu, Globe, Rocket } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Mail, FileDown, Sparkles, Terminal, ShieldCheck, Database, Layers, Phone } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import HeroAnimation from './HeroAnimation';
+import { personalInfo, stats } from '@/lib/data';
 
-// --- Helper Components for "Wow" Effect ---
-
-const ShuffleText = ({ text, delay = 0 }: { text: string, delay?: number }) => {
-  const letters = text.split("");
-  return (
-    <motion.span className="inline-flex overflow-hidden">
-      {letters.map((letter, i) => (
-        <motion.span
-          key={i}
-          initial={{ y: "100%", opacity: 0, filter: "blur(10px)" }}
-          animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-          transition={{
-            duration: 1.2,
-            delay: delay + (i * 0.05),
-            ease: [0.22, 1, 0.36, 1]
-          }}
-          className="inline-block"
-        >
-          {letter === " " ? "\u00A0" : letter}
-        </motion.span>
-      ))}
-    </motion.span>
-  );
-};
-
-const MagneticButton = ({ children, onClick, className }: { children: React.ReactNode, onClick?: () => void, className?: string }) => {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 150, damping: 15 });
-  const springY = useSpring(y, { stiffness: 150, damping: 15 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    x.set((e.clientX - centerX) * 0.4);
-    y.set((e.clientY - centerY) * 0.4);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
-  return (
-    <motion.button
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      onClick={onClick}
-      style={{ x: springX, y: springY }}
-      className={className}
-    >
-      {children}
-    </motion.button>
-  );
-};
-
-const FloatingIcon = ({ Icon, i, smoothMouseX, smoothMouseY }: { Icon: React.ElementType, i: number, smoothMouseX: MotionValue<number>, smoothMouseY: MotionValue<number> }) => {
-  const x = useTransform(smoothMouseX, [-500, 500], [15 * (i + 1), -15 * (i + 1)]);
-  const y = useTransform(smoothMouseY, [-500, 500], [15 * (i + 1), -15 * (i + 1)]);
+const FloatingIcon = ({
+  Icon,
+  i,
+  smoothMouseX,
+  smoothMouseY,
+}: {
+  Icon: React.ElementType;
+  i: number;
+  smoothMouseX: MotionValue<number>;
+  smoothMouseY: MotionValue<number>;
+}) => {
+  const x = useTransform(smoothMouseX, [-500, 500], [12 * (i + 1), -12 * (i + 1)]);
+  const y = useTransform(smoothMouseY, [-500, 500], [12 * (i + 1), -12 * (i + 1)]);
 
   return (
     <motion.div
       initial={{ opacity: 0 }}
-      animate={{ 
-          opacity: [0.1, 0.3, 0.1],
-          y: [0, -40, 0],
-          x: [0, 20, 0],
-          rotate: [0, 10, 0]
+      animate={{
+        opacity: [0.06, 0.2, 0.06],
+        y: [0, -20, 0],
+        x: [0, 10, 0],
       }}
       transition={{
-          duration: 8 + i * 2,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: i * 1.5
+        duration: 8 + i * 2,
+        repeat: Infinity,
+        ease: 'easeInOut',
+        delay: i * 1.2,
       }}
       style={{
-          position: 'absolute',
-          top: `${20 + i * 20}%`,
-          left: `${10 + i * 15}%`,
-          x,
-          y
+        position: 'absolute',
+        top: `${15 + i * 22}%`,
+        left: `${6 + i * 24}%`,
+        x,
+        y,
       }}
     >
-      <Icon className="w-12 h-12 text-primary/20" />
+      <Icon className="w-8 h-8 md:w-10 md:h-10 text-primary/25" />
     </motion.div>
   );
 };
 
-const Hero = () => {
+const techPills = [
+  'Next.js 16',
+  'React 19',
+  'TypeScript',
+  'Node.js',
+  'NestJS',
+  'Supabase',
+  'MongoDB',
+  'Stripe',
+  'AWS',
+  'Docker',
+];
+
+export default function Hero() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -102,14 +68,13 @@ const Hero = () => {
     }
   };
 
-  // Parallax Values
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const smoothMouseX = useSpring(mouseX, { stiffness: 50, damping: 20 });
   const smoothMouseY = useSpring(mouseY, { stiffness: 50, damping: 20 });
 
-  const rotateX = useTransform(smoothMouseY, [-300, 300], [5, -5]);
-  const rotateY = useTransform(smoothMouseX, [-300, 300], [-5, 5]);
+  const rotateX = useTransform(smoothMouseY, [-300, 300], [3, -3]);
+  const rotateY = useTransform(smoothMouseX, [-300, 300], [-3, 3]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const { clientX, clientY } = e;
@@ -118,120 +83,179 @@ const Hero = () => {
   };
 
   return (
-    <section 
-      id="home" 
+    <section
+      id="home"
       onMouseMove={handleMouseMove}
-      className="h-screen relative flex items-center overflow-hidden bg-transparent perspective-1000"
+      className="min-h-[82vh] lg:min-h-[86vh] relative flex flex-col justify-center overflow-hidden bg-transparent pt-20 pb-8 sm:pt-24 sm:pb-12"
     >
-      {/* Floating Decorative Elements */}
+      {/* Background Floating Icons */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {[Code, Cpu, Globe, Rocket].map((Icon, i) => (
-          <FloatingIcon 
-            key={i} 
-            Icon={Icon} 
-            i={i} 
-            smoothMouseX={smoothMouseX} 
-            smoothMouseY={smoothMouseY} 
+        {[Terminal, Layers, Database, ShieldCheck].map((Icon, i) => (
+          <FloatingIcon
+            key={i}
+            Icon={Icon}
+            i={i}
+            smoothMouseX={smoothMouseX}
+            smoothMouseY={smoothMouseY}
           />
         ))}
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          
-          {/* Left Column: Content */}
-          <motion.div 
-            style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+          {/* Left Column: Hero Content */}
+          <motion.div
+            style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
             initial="hidden"
             animate="visible"
             variants={staggerContainer}
-            className="text-left"
+            className="lg:col-span-7 text-left"
           >
-            <motion.div variants={fadeInUp} className="mb-4" style={{ translateZ: "60px" }}>
-                <span className="text-text-secondary text-lg font-light tracking-widest uppercase flex items-center gap-4">
-                  <div className="h-[1px] w-12 bg-primary/50" />
-                  Hi, I&apos;m <span className="text-white font-bold ml-1">Ebson Joy</span>
+            {/* Live Availability Badge */}
+            <motion.div variants={fadeInUp} className="mb-4 flex flex-wrap items-center gap-2.5">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-md text-xs font-semibold text-primary">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                 </span>
+                Available for Roles
+              </div>
+              <span className="text-[11px] font-medium text-text-muted">
+                📍 {personalInfo.location} • {personalInfo.internationalExp}
+              </span>
             </motion.div>
 
-            <motion.h1 
-              className="text-5xl md:text-7xl font-black tracking-tight mb-6 text-white leading-[1]"
-              style={{ translateZ: "100px" }}
+            {/* Name & Headline */}
+            <motion.div variants={fadeInUp} className="space-y-1.5 mb-4">
+              <p className="text-text-secondary text-sm sm:text-base font-medium tracking-wide">
+                Hi, I&apos;m <span className="text-white font-bold">{personalInfo.name}</span>
+              </p>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.12]">
+                Architecting <br className="hidden sm:inline" />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-indigo-400 to-purple-400 bg-300% animate-gradient">
+                  Scalable Web Solutions
+                </span>
+              </h1>
+            </motion.div>
+
+            {/* Professional Summary */}
+            <motion.p
+              variants={fadeInUp}
+              className="text-xs sm:text-sm md:text-base text-text-secondary max-w-xl mb-6 font-light leading-relaxed border-l-2 border-primary/40 pl-4"
             >
-              <div className="block overflow-hidden">
-                <ShuffleText text="Building" />
-              </div>
-              <div className="block overflow-hidden">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent-to to-primary bg-300% animate-gradient">
-                  <ShuffleText text="Scalable" delay={0.4} />
-                </span>
-              </div>
-              <div className="block overflow-hidden">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent-to to-primary bg-300% animate-gradient">
-                  <ShuffleText text="Solutions" delay={0.8} />
-                </span>
-              </div>
-            </motion.h1>
+              Full-Stack Developer with <span className="text-white font-medium">2+ years of experience</span> crafting high-performance, secure digital platforms. Specialized in <span className="text-white font-medium">Next.js, React, Node.js, NestJS, and Supabase</span> with cloud deployments, robust payment gateways, and real-time systems.
+            </motion.p>
 
-             <motion.p 
-               variants={fadeInUp} 
-               className="text-lg md:text-xl text-text-secondary max-w-xl mb-8 font-light leading-relaxed border-l-2 border-primary/20 pl-6 ml-1"
-               style={{ translateZ: "50px" }}
-             >
-               Full-stack engineer specialized in crafting <span className="text-white font-semibold">high-performance</span> 
-               digital architectures. I transform complex problems into seamless user experiences.
-             </motion.p>
+            {/* CTA Buttons & Social Links */}
+            <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-3 mb-7">
+              <button
+                onClick={() => scrollToSection('projects')}
+                className="px-5 py-2.5 bg-primary text-navy rounded-xl font-bold uppercase tracking-wider text-xs hover:bg-white hover:shadow-[0_0_25px_rgba(56,189,248,0.35)] transition-all duration-300 flex items-center gap-2 group active:scale-95 shadow-md"
+              >
+                <span>View Projects</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </button>
 
-             {/* Action Buttons */}
-             <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-6 pl-1" style={{ translateZ: "80px" }}>
-               <MagneticButton 
-                 onClick={() => scrollToSection('contact')}
-                 className="relative px-10 py-5 bg-primary text-navy rounded-xl font-black uppercase tracking-widest text-xs hover:shadow-[0_0_30px_rgba(100,255,218,0.3)] transition-all flex items-center gap-4 group overflow-hidden"
-               >
-                 <div className="absolute inset-0 bg-white/30 -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
-                 <span className="relative z-10">Initiate Contact</span>
-                 <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform relative z-10" />
-               </MagneticButton>
-               
-               <div className="flex items-center gap-4">
-                 {[
-                   { icon: Github, href: "https://github.com/ebsonjoy" },
-                   { icon: Linkedin, href: "https://www.linkedin.com/in/ebson-joy/" },
-                   { icon: Mail, href: "#contact" }
-                 ].map((social, i) => (
-                   <motion.a 
-                    key={i}
-                    href={social.href} 
-                    target={social.href.startsWith('http') ? "_blank" : "_self"}
-                    rel="noopener noreferrer" 
-                    whileHover={{ scale: 1.1, y: -3 }}
-                    className="p-4 bg-navy-light/50 rounded-xl text-text-secondary hover:text-primary hover:bg-white/5 transition-all border border-white/5 hover:border-primary/30 hover:shadow-[0_0_20px_rgba(100,255,218,0.15)] backdrop-blur-md"
-                   >
-                     <social.icon className="w-6 h-6" />
-                   </motion.a>
-                 ))}
-               </div>
-             </motion.div>
+              <a
+                href={personalInfo.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2.5 bg-white/5 hover:bg-white/10 text-white rounded-xl font-bold uppercase tracking-wider text-xs border border-white/10 hover:border-primary/40 transition-all duration-300 flex items-center gap-2 active:scale-95"
+              >
+                <FileDown className="w-3.5 h-3.5 text-primary" />
+                <span>Resume</span>
+              </a>
+
+              <div className="flex items-center gap-2 ml-1">
+                <a
+                  href={personalInfo.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub Profile"
+                  className="p-2.5 bg-navy-light/60 rounded-xl text-text-secondary hover:text-primary hover:bg-white/10 transition-all border border-white/5 hover:border-primary/30"
+                >
+                  <Github className="w-4 h-4" />
+                </a>
+                <a
+                  href={personalInfo.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn Profile"
+                  className="p-2.5 bg-navy-light/60 rounded-xl text-text-secondary hover:text-primary hover:bg-white/10 transition-all border border-white/5 hover:border-primary/30"
+                >
+                  <Linkedin className="w-4 h-4" />
+                </a>
+                <a
+                  href={`mailto:${personalInfo.email}`}
+                  aria-label="Email"
+                  className="p-2.5 bg-navy-light/60 rounded-xl text-text-secondary hover:text-primary hover:bg-white/10 transition-all border border-white/5 hover:border-primary/30"
+                >
+                  <Mail className="w-4 h-4" />
+                </a>
+                <a
+                  href={`tel:${personalInfo.phone.replace(/\s+/g, '')}`}
+                  aria-label="Phone"
+                  className="p-2.5 bg-navy-light/60 rounded-xl text-text-secondary hover:text-primary hover:bg-white/10 transition-all border border-white/5 hover:border-primary/30"
+                >
+                  <Phone className="w-4 h-4" />
+                </a>
+              </div>
+            </motion.div>
+
+            {/* Quick Metrics Bar */}
+            <motion.div
+              variants={fadeInUp}
+              className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-3.5 sm:p-4 rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-md"
+            >
+              {stats.map((stat, i) => (
+                <div key={i} className="text-left border-l border-white/10 pl-3 first:border-l-0 first:pl-0">
+                  <div className="text-lg sm:text-xl font-black text-white tracking-tight">
+                    {stat.value}
+                  </div>
+                  <div className="text-[10px] text-text-muted uppercase tracking-wider font-medium mt-0.5">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </motion.div>
           </motion.div>
 
-          {/* Right Column: Animation */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
+          {/* Right Column: Hero Graphic */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
-            className="relative hidden lg:block scale-90"
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+            className="lg:col-span-5 relative hidden lg:flex items-center justify-center"
           >
-             <div className="relative z-20">
-               <HeroAnimation />
-             </div>
-             {/* Extra Glow Behind Animation */}
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+            <div className="relative z-20 w-full max-w-[380px]">
+              <HeroAnimation />
+            </div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] bg-primary/10 rounded-full blur-[90px] pointer-events-none" />
           </motion.div>
-
         </div>
+
+        {/* Tech Stack Marquee Pills */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-8 pt-5 border-t border-white/5"
+        >
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-[11px] uppercase tracking-wider font-bold text-text-muted flex items-center gap-1.5 mr-1">
+              <Sparkles className="w-3 h-3 text-primary" /> Stack:
+            </span>
+            {techPills.map((tech) => (
+              <span
+                key={tech}
+                className="px-2.5 py-1 rounded-lg text-[11px] font-mono font-medium bg-white/[0.03] hover:bg-primary/15 border border-white/5 hover:border-primary/30 text-text-secondary hover:text-white transition-all"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
-};
-
-export default Hero;
+}

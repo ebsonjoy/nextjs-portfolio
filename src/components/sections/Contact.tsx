@@ -1,16 +1,24 @@
-'use client'
-import { useState, useRef } from 'react';
-import { Mail, Send, CheckCircle, AlertCircle } from 'lucide-react';
+'use client';
+import React, { useState, useRef } from 'react';
+import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, Copy, Check, ExternalLink, Globe } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
+import { personalInfo } from '@/lib/data';
 
 export default function Contact() {
   const [modalMessage, setModalMessage] = useState<string | null>(null);
   const [statusType, setStatusType] = useState<'success' | 'error' | null>(null);
   const [formErrors, setFormErrors] = useState<{ [key: string]: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [copiedEmail, setCopiedEmail] = useState(false);
   const formRef = useRef<HTMLFormElement | null>(null);
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText(personalInfo.email);
+    setCopiedEmail(true);
+    setTimeout(() => setCopiedEmail(false), 3000);
+  };
 
   const validateForm = (formData: FormData) => {
     const errors: { [key: string]: string } = {};
@@ -49,16 +57,16 @@ export default function Contact() {
       });
 
       if (response.ok) {
-        setModalMessage('Message sent successfully! I will get back to you soon.');
+        setModalMessage('Message transmitted successfully! I will get back to you shortly.');
         setStatusType('success');
         formRef.current?.reset();
       } else {
-        setModalMessage('Something went wrong. Please try again later.');
+        setModalMessage('Something went wrong on the server. Please email me directly at ebsonjoy721@gmail.com.');
         setStatusType('error');
       }
     } catch (error) {
       console.error('Submission error:', error);
-      setModalMessage('Network error. Please check your connection.');
+      setModalMessage('Network error. Please reach out via email or phone directly.');
       setStatusType('error');
     } finally {
       setIsSubmitting(false);
@@ -70,169 +78,246 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-32 relative overflow-hidden">
-      {/* Local Background Effects */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#4A148C]/10 rounded-full blur-[100px] pointer-events-none" />
+    <section id="contact" className="py-8 sm:py-14 relative overflow-hidden">
+      {/* Ambient background lights */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <motion.div 
-           initial="hidden"
-           whileInView="visible"
-           viewport={{ once: true }}
-           variants={staggerContainer}
-           className="max-w-6xl mx-auto"
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          variants={staggerContainer}
+          className="max-w-6xl mx-auto"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-20">
-            <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-md">
-              <span className="text-xs font-bold text-primary uppercase tracking-[0.2em]">Ready to start?</span>
+          {/* Header */}
+          <motion.div variants={fadeInUp} className="text-center mb-10 sm:mb-12">
+            <div className="inline-block px-3 py-1 mb-3 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-md">
+              <span className="text-xs font-bold text-primary uppercase tracking-widest">Get in Touch</span>
             </div>
-            <h2 className="text-5xl md:text-7xl font-black mb-6 text-white tracking-tight">
-              Let&apos;s build <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-to">together.</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black mb-3 text-white tracking-tight">
+              Let&apos;s Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-indigo-400 to-purple-400">Exceptional</span>
             </h2>
-            <p className="text-text-secondary text-lg max-w-2xl mx-auto leading-relaxed">
-              Have a project in mind or just want to chat? My inbox is always open.
+            <p className="text-text-secondary text-xs sm:text-sm max-w-xl mx-auto leading-relaxed font-light">
+              Looking for a full-stack developer for a full-time role, contract, or exciting project? Let&apos;s connect.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-5 gap-8 items-start">
+          <div className="grid md:grid-cols-5 gap-6 items-start">
             {/* Contact Details Card */}
-            <motion.div variants={fadeInUp} className="md:col-span-2 space-y-6">
-              <div className="p-10 rounded-[2.5rem] bg-white/[0.03] backdrop-blur-2xl border border-white/10 shadow-2xl relative overflow-hidden group">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                
-                <h3 className="text-3xl font-bold text-white mb-8">Reach Out</h3>
-                
-                <div className="space-y-4">
-                  <ContactLink 
-                    href="mailto:ebsonjoy721@gmail.com" 
-                    icon={<Mail className="w-5 h-5" />} 
-                    label="Email" 
-                    value="ebsonjoy721@gmail.com" 
-                  />
-                  <ContactLink 
-                    href="https://github.com/ebsonjoy" 
-                    icon={<FaGithub className="w-5 h-5" />} 
-                    label="GitHub" 
-                    value="github.com/ebsonjoy" 
-                  />
-                  <ContactLink 
-                    href="https://www.linkedin.com/in/ebson-joy/" 
-                    icon={<FaLinkedin className="w-5 h-5" />} 
-                    label="LinkedIn" 
-                    value="linkedin.com/ebson-joy" 
-                  />
+            <motion.div variants={fadeInUp} className="md:col-span-2 space-y-3">
+              <div className="p-6 rounded-2xl bg-navy-light/60 backdrop-blur-2xl border border-white/10 shadow-xl relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary via-indigo-400 to-transparent" />
+
+                <h3 className="text-lg font-bold text-white mb-4">Contact Channels</h3>
+
+                <div className="space-y-2.5">
+                  {/* Email */}
+                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5 hover:border-primary/30 transition-all flex items-center justify-between group">
+                    <a
+                      href={`mailto:${personalInfo.email}`}
+                      className="flex items-center gap-3 flex-1 min-w-0"
+                    >
+                      <div className="w-8 h-8 flex items-center justify-center rounded-lg bg-primary/10 text-primary shrink-0 group-hover:bg-primary group-hover:text-navy transition-colors">
+                        <Mail className="w-3.5 h-3.5" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-[9px] font-bold text-text-muted uppercase tracking-wider">Direct Email</p>
+                        <p className="text-xs text-text-secondary group-hover:text-white transition-colors truncate">
+                          {personalInfo.email}
+                        </p>
+                      </div>
+                    </a>
+                    <button
+                      onClick={copyEmail}
+                      className="p-1.5 rounded-md text-text-muted hover:text-primary hover:bg-white/5 transition-colors"
+                      title="Copy email"
+                    >
+                      {copiedEmail ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Copy className="w-3.5 h-3.5" />}
+                    </button>
+                  </div>
+
+                  {/* Phone */}
+                  <a
+                    href={`tel:${personalInfo.phone.replace(/\s+/g, '')}`}
+                    className="p-3 rounded-xl bg-white/[0.02] border border-white/5 hover:border-primary/30 transition-all flex items-center gap-3 group block"
+                  >
+                    <div className="w-8 h-8 flex items-center justify-center rounded-lg bg-primary/10 text-primary shrink-0 group-hover:bg-primary group-hover:text-navy transition-colors">
+                      <Phone className="w-3.5 h-3.5" />
+                    </div>
+                    <div>
+                      <p className="text-[9px] font-bold text-text-muted uppercase tracking-wider">Phone / WhatsApp</p>
+                      <p className="text-xs text-text-secondary group-hover:text-white transition-colors">
+                        {personalInfo.phone}
+                      </p>
+                    </div>
+                  </a>
+
+                  {/* Location */}
+                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5 flex items-center gap-3">
+                    <div className="w-8 h-8 flex items-center justify-center rounded-lg bg-primary/10 text-primary shrink-0">
+                      <MapPin className="w-3.5 h-3.5" />
+                    </div>
+                    <div>
+                      <p className="text-[9px] font-bold text-text-muted uppercase tracking-wider">Location</p>
+                      <p className="text-xs text-text-secondary">
+                        {personalInfo.location} <span className="text-text-muted">({personalInfo.internationalExp})</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Portfolio */}
+                  <a
+                    href={personalInfo.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 rounded-xl bg-white/[0.02] border border-white/5 hover:border-primary/30 transition-all flex items-center justify-between group"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 flex items-center justify-center rounded-lg bg-primary/10 text-primary shrink-0 group-hover:bg-primary group-hover:text-navy transition-colors">
+                        <Globe className="w-3.5 h-3.5" />
+                      </div>
+                      <div>
+                        <p className="text-[9px] font-bold text-text-muted uppercase tracking-wider">Website</p>
+                        <p className="text-xs text-text-secondary group-hover:text-white transition-colors">
+                          ebson.online
+                        </p>
+                      </div>
+                    </div>
+                    <ExternalLink className="w-3.5 h-3.5 text-text-muted group-hover:text-primary transition-colors" />
+                  </a>
                 </div>
 
+                {/* Social Buttons */}
+                <div className="pt-4 mt-4 border-t border-white/10 flex items-center gap-2.5">
+                  <a
+                    href={personalInfo.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-primary/30 flex items-center justify-center gap-1.5 text-xs font-bold text-white uppercase tracking-wider transition-all"
+                  >
+                    <FaGithub className="w-3.5 h-3.5 text-primary" /> GitHub
+                  </a>
+                  <a
+                    href={personalInfo.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-primary/30 flex items-center justify-center gap-1.5 text-xs font-bold text-white uppercase tracking-wider transition-all"
+                  >
+                    <FaLinkedin className="w-3.5 h-3.5 text-primary" /> LinkedIn
+                  </a>
+                </div>
               </div>
             </motion.div>
 
             {/* Contact Form Card */}
             <motion.div variants={fadeInUp} className="md:col-span-3">
-              <div className="p-10 rounded-[2.5rem] bg-white/[0.03] backdrop-blur-2xl border border-white/10 shadow-2xl relative overflow-hidden group">
-                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -mr-16 -mt-16" />
-                 
-                 <form ref={formRef} onSubmit={handleSubmit} className="space-y-8 relative">
-                    <div className="grid sm:grid-cols-2 gap-6">
-                      <FormInput 
-                        label="Name" 
-                        id="name" 
-                        name="name" 
-                        placeholder="John" 
-                        error={formErrors.name} 
+              <div className="p-6 sm:p-7 rounded-2xl bg-navy-light/60 backdrop-blur-2xl border border-white/10 shadow-xl relative overflow-hidden">
+                <h3 className="text-lg font-bold text-white mb-4">Send a Message</h3>
+
+                <form ref={formRef} onSubmit={handleSubmit} className="space-y-4 relative">
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="space-y-1">
+                      <label htmlFor="name" className="block text-[11px] font-bold text-white uppercase tracking-wider">
+                        Name
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        className={`w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border ${
+                          formErrors.name ? 'border-red-500/60' : 'border-white/10'
+                        } focus:border-primary focus:ring-2 focus:ring-primary/20 text-white placeholder-text-muted/40 text-xs sm:text-sm outline-none transition-all`}
+                        placeholder="Your Name"
                       />
-                      <FormInput 
-                        label="Email" 
-                        id="email" 
-                        name="email" 
+                      {formErrors.name && (
+                        <p className="text-red-400 text-[10px] font-medium mt-0.5">{formErrors.name}</p>
+                      )}
+                    </div>
+
+                    <div className="space-y-1">
+                      <label htmlFor="email" className="block text-[11px] font-bold text-white uppercase tracking-wider">
+                        Email
+                      </label>
+                      <input
                         type="email"
-                        placeholder="john@example.com" 
-                        error={formErrors.email} 
+                        id="email"
+                        name="email"
+                        className={`w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border ${
+                          formErrors.email ? 'border-red-500/60' : 'border-white/10'
+                        } focus:border-primary focus:ring-2 focus:ring-primary/20 text-white placeholder-text-muted/40 text-xs sm:text-sm outline-none transition-all`}
+                        placeholder="your@email.com"
                       />
+                      {formErrors.email && (
+                        <p className="text-red-400 text-[10px] font-medium mt-0.5">{formErrors.email}</p>
+                      )}
                     </div>
+                  </div>
 
-                    <div className="space-y-3">
-                      <label htmlFor="message" className="block text-sm font-bold text-white uppercase tracking-wider ml-1">Your Vision</label>
-                      <textarea 
-                        id="message" 
-                        name="message" 
-                        rows={5} 
-                        className={`w-full px-6 py-5 rounded-2xl bg-white/[0.03] border ${formErrors.message ? 'border-red-500/50' : 'border-white/10'} focus:border-primary/50 focus:ring-4 focus:ring-primary/10 text-white placeholder-text-muted/50 transition-all outline-none resize-none transition-all duration-300`} 
-                        placeholder="Tell me about what you're dreaming of..."
-                      />
-                      {formErrors.message && <p className="text-red-400 text-xs mt-2 pl-1 animate-fadeIn">{formErrors.message}</p>}
-                    </div>
-                    
-                    <button 
-                      type="submit" 
-                      disabled={isSubmitting}
-                      className="w-full bg-primary text-navy py-5 rounded-2xl font-black uppercase tracking-[0.2em] hover:bg-white transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-3 group relative overflow-hidden shadow-[0_20px_40px_-15px_rgba(var(--primary-rgb),0.3)] hover:shadow-primary/40 active:scale-[0.98]"
+                  <div className="space-y-1">
+                    <label htmlFor="message" className="block text-[11px] font-bold text-white uppercase tracking-wider">
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={4}
+                      className={`w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border ${
+                        formErrors.message ? 'border-red-500/60' : 'border-white/10'
+                      } focus:border-primary focus:ring-2 focus:ring-primary/20 text-white placeholder-text-muted/40 text-xs sm:text-sm outline-none resize-none transition-all`}
+                      placeholder="Your project, opportunity, or idea..."
+                    />
+                    {formErrors.message && (
+                      <p className="text-red-400 text-[10px] font-medium mt-0.5">{formErrors.message}</p>
+                    )}
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-primary text-navy py-3 rounded-xl font-bold uppercase tracking-wider text-xs hover:bg-white transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 group shadow-md"
+                  >
+                    <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
+                    {!isSubmitting && <Send className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />}
+                  </button>
+                </form>
+
+                {/* Status Overlay */}
+                <AnimatePresence>
+                  {modalMessage && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="absolute inset-0 z-50 flex items-center justify-center p-4 bg-navy/85 backdrop-blur-md"
                     >
-                      <span className="relative z-10">{isSubmitting ? 'Transmitting...' : 'Send Signal'}</span>
-                      {!isSubmitting && <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform relative z-10" />}
-                    </button>
-                 </form>
-
-                 {/* Success/Error Overlay */}
-                 <AnimatePresence>
-                   {modalMessage && (
-                     <motion.div 
-                       initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
-                       animate={{ opacity: 1, backdropFilter: 'blur(10px)' }}
-                       exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
-                       className="absolute inset-0 z-50 flex items-center justify-center p-10 bg-navy/60"
-                     >
-                       <motion.div 
-                         initial={{ scale: 0.9, opacity: 0 }}
-                         animate={{ scale: 1, opacity: 1 }}
-                         className={`p-8 rounded-[2rem] text-center shadow-2xl border ${
-                           statusType === 'success' ? 'bg-green-500/10 border-green-500/30 text-green-400' : 'bg-red-500/10 border-red-500/30 text-red-400'
-                         }`}
-                       >
-                         {statusType === 'success' ? <CheckCircle className="w-16 h-16 mx-auto mb-4" /> : <AlertCircle className="w-16 h-16 mx-auto mb-4" />}
-                         <h4 className="text-2xl font-bold mb-2">
-                           {statusType === 'success' ? 'Message Sent!' : 'Transmission Failed'}
-                         </h4>
-                         <p className="text-white/80">{modalMessage}</p>
-                       </motion.div>
-                     </motion.div>
-                   )}
-                 </AnimatePresence>
+                      <motion.div
+                        initial={{ scale: 0.9 }}
+                        animate={{ scale: 1 }}
+                        className={`p-5 rounded-xl text-center shadow-2xl border max-w-sm ${
+                          statusType === 'success'
+                            ? 'bg-green-500/10 border-green-500/30 text-green-400'
+                            : 'bg-red-500/10 border-red-500/30 text-red-400'
+                        }`}
+                      >
+                        {statusType === 'success' ? (
+                          <CheckCircle className="w-10 h-10 mx-auto mb-2" />
+                        ) : (
+                          <AlertCircle className="w-10 h-10 mx-auto mb-2" />
+                        )}
+                        <h4 className="text-base font-bold mb-1">
+                          {statusType === 'success' ? 'Message Sent' : 'Notice'}
+                        </h4>
+                        <p className="text-xs text-white/90 leading-relaxed">{modalMessage}</p>
+                      </motion.div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </motion.div>
           </div>
         </motion.div>
       </div>
     </section>
-  );
-}
-
-function ContactLink({ href, icon, label, value }: { href: string; icon: React.ReactNode; label: string; value: string }) {
-  return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-5 p-4 rounded-2xl hover:bg-white/[0.05] transition-all group border border-transparent hover:border-white/5">
-      <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-white/[0.05] text-text-muted group-hover:bg-primary group-hover:text-navy transition-all duration-500 shadow-inner">
-        {icon}
-      </div>
-      <div>
-        <p className="text-xs font-bold text-text-muted uppercase tracking-widest">{label}</p>
-        <p className="text-text-secondary group-hover:text-white transition-colors">{value}</p>
-      </div>
-    </a>
-  );
-}
-
-function FormInput({ label, id, name, type = "text", placeholder, error }: { label: string; id: string; name: string; type?: string; placeholder: string; error?: string }) {
-  return (
-    <div className="space-y-3">
-      <label htmlFor={id} className="block text-sm font-bold text-white uppercase tracking-wider ml-1">{label}</label>
-      <input 
-        type={type} 
-        id={id} 
-        name={name} 
-        className={`w-full px-6 py-5 rounded-2xl bg-white/[0.03] border ${error ? 'border-red-500/50' : 'border-white/10'} focus:border-primary/50 focus:ring-4 focus:ring-primary/10 text-white placeholder-text-muted/50 transition-all outline-none transition-all duration-300`} 
-        placeholder={placeholder} 
-      />
-      {error && <p className="text-red-400 text-xs mt-2 pl-1 animate-fadeIn">{error}</p>}
-    </div>
   );
 }

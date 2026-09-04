@@ -1,60 +1,78 @@
-import { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from '@/components/layout/Footer'
-import ScrollToTop from '@/components/ui/ScrollToTop'
-import SmoothScroll from "@/components/ui/SmoothScroll";
-import GlobalBackground from "@/components/layout/GlobalBackground";
+import { Metadata } from 'next';
+import { Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
+import './globals.css';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
+import ScrollToTop from '@/components/ui/ScrollToTop';
+import SmoothScroll from '@/components/ui/SmoothScroll';
+import GlobalBackground from '@/components/layout/GlobalBackground';
 
-const inter = Inter({ subsets: ['latin'] })
+const sansFont = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+});
+
+const monoFont = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
-  title: "Ebson Joy | Portfolio",
-  description: "Ebson Joy's Professional Portfolio - Full Stack Developer specializing in Next.js, React, and Node.js.",
+  title: 'Ebson Joy | Full-Stack Developer (Next.js, Node.js, NestJS, Supabase)',
+  description:
+    'Full-Stack Developer with 2+ years of experience building scalable, secure, and high-performance web applications using Next.js, React, Node.js, NestJS, Supabase, and AWS.',
   keywords: [
-    "Ebson Joy",
-    "Portfolio",
-    "Full Stack Developer",
-    "Next.js Developer",
-    "React Developer",
-    "Node.js",
-    "TypeScript",
-    "Web Development",
-    "UI/UX Design",
-    "SQL",
-    "MongoDB"
+    'Ebson Joy',
+    'Full-Stack Developer',
+    'Next.js Developer',
+    'React Developer',
+    'Node.js Developer',
+    'NestJS Developer',
+    'TypeScript',
+    'Supabase',
+    'PostgreSQL',
+    'MongoDB',
+    'Stripe Integration',
+    'WebSockets',
+    'Agora RTC',
+    'AWS Cloud',
+    'UAE Web Developer',
+    'Software Engineer India',
   ],
-  authors: [{ name: "Ebson Joy" }],
-  creator: "Ebson Joy",
-  metadataBase: new URL("https://www.ebson.online"), 
+  authors: [{ name: 'Ebson Joy' }],
+  creator: 'Ebson Joy',
+  metadataBase: new URL('https://www.ebson.online'),
   icons: {
-    icon: "/images/Ebson-Joy.jpg",
-    shortcut: "/images/Ebson-Joy.jpg",
-    apple: "/images/Ebson-Joy.jpg",
+    icon: '/images/Ebson-Joy.jpg',
+    shortcut: '/images/Ebson-Joy.jpg',
+    apple: '/images/Ebson-Joy.jpg',
   },
   openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://www.ebson.online",
-    title: "Ebson Joy | Full Stack Portfolio",
-    description: "Explore the professional work and skills of Ebson Joy, a passionate Full Stack Developer.",
-    siteName: "Ebson Joy Portfolio",
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://www.ebson.online',
+    title: 'Ebson Joy | Full-Stack Developer Portfolio',
+    description:
+      'Full-Stack Developer with 2+ years of experience building scalable, secure, and high-performance web applications with Next.js, Node.js, NestJS, and Supabase.',
+    siteName: 'Ebson Joy Portfolio',
     images: [
       {
-        url: "/opengraph-image.png",
+        url: '/opengraph-image.png',
         width: 1200,
         height: 630,
-        alt: "Ebson Joy Portfolio Preview",
+        alt: 'Ebson Joy Portfolio Preview',
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Ebson Joy | Full Stack Portfolio",
-    description: "Ebson Joy's Professional Portfolio - Full Stack Developer specializing in Next.js, React, and Node.js.",
-    images: ["/opengraph-image.png"],
-    creator: "@ebsonjoy", // Placeholder
+    card: 'summary_large_image',
+    title: 'Ebson Joy | Full-Stack Developer Portfolio',
+    description:
+      'Explore projects, architectures, and technical experience of Ebson Joy — Full-Stack Developer specializing in Next.js, Node.js, NestJS, Supabase, and AWS.',
+    images: ['/opengraph-image.png'],
+    creator: '@ebsonjoy',
   },
 };
 
@@ -64,9 +82,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className={`dark scroll-smooth ${sansFont.variable} ${monoFont.variable}`}>
       <body
-        className={`${inter.className} min-h-screen transition-colors duration-300 text-gray-100`}
+        className={`${sansFont.className} min-h-screen bg-navy text-text-primary transition-colors duration-300 selection:bg-primary/30 selection:text-white antialiased`}
       >
         <SmoothScroll>
           <div className="relative">
@@ -74,10 +92,8 @@ export default function RootLayout({
             <div className="sticky top-0 z-50">
               <Navbar />
             </div>
-            <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 relative">
-              <div className="relative">
-                {children}
-              </div>
+            <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 relative">
+              <div className="relative">{children}</div>
             </main>
             <Footer />
             <ScrollToTop />

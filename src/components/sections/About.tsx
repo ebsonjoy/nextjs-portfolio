@@ -1,175 +1,194 @@
-'use client'
+'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GraduationCap, Trophy, MapPin, User, Calendar, Briefcase, Award } from 'lucide-react';
-import { achievements } from '@/lib/data';
+import { GraduationCap, MapPin, Calendar, Award, Code, CheckCircle, ShieldCheck, Zap } from 'lucide-react';
+import { personalInfo, education, achievements } from '@/lib/data';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 
-const timelineData = [
+const corePillars = [
   {
-    type: 'bio',
-    title: 'Who am I?',
-    icon: <User className="w-6 h-6" />,
-    content: (
-      <div className="space-y-4">
-        <p className="text-text-secondary text-lg leading-relaxed">
-          I&apos;m a passionate Full Stack Developer with a knack for building intuitive and performing web applications. My journey started with a curiosity for how things work on the internet, which quickly evolved into a career obsession with clean code, modern architectures, and user-centric design.
-        </p>
-        <div className="flex flex-wrap gap-4 mt-4">
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-xs text-text-primary">
-            <MapPin className="w-3.5 h-3.5 text-primary" />
-            <span>Dubai, UAE</span>
-          </div>
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-xs text-text-primary">
-            <Briefcase className="w-3.5 h-3.5 text-primary" />
-            <span>Available for Hire</span>
-          </div>
-        </div>
-      </div>
-    )
+    icon: Code,
+    title: 'Clean Architecture',
+    description: 'Maintainable codebases, Repository patterns, modular NestJS/Express backends, and strict TypeScript.',
   },
   {
-    type: 'education',
-    title: 'Education',
-    icon: <GraduationCap className="w-6 h-6" />,
-    content: (
-      <div>
-        <h4 className="text-xl font-bold text-white">BSc Computer Science</h4>
-        <p className="text-primary font-medium">Kannur University</p>
-        <p className="text-text-muted mt-2 flex items-center gap-2">
-          <Calendar className="w-4 h-4" /> 2019 - 2022
-        </p>
-      </div>
-    )
+    icon: Zap,
+    title: 'High Performance & Real-Time',
+    description: 'Low-latency WebSockets, Socket.IO, and Agora RTC for fluid live interactions, chat, and media streaming.',
   },
   {
-    type: 'certification',
-    title: 'Certification',
-    icon: <Award className="w-6 h-6" />,
-    content: (
-      <div>
-        <h4 className="text-xl font-bold text-white">MERN Stack Training</h4>
-        <p className="text-primary font-medium">Brototype</p>
-        <p className="text-text-muted mt-2 flex items-center gap-2">
-          <Calendar className="w-4 h-4" /> 2023
-        </p>
-      </div>
-    )
+    icon: ShieldCheck,
+    title: 'Security & Enterprise Integrations',
+    description: 'Rigorous RBAC access control, JWT authentication, and resilient Stripe/Razorpay payment webhook handling.',
   },
-  {
-    type: 'achievements',
-    title: 'Achievements',
-    icon: <Trophy className="w-6 h-6" />,
-    content: (
-      <ul className="space-y-3">
-        {achievements.slice(0, 4).map((item, i) => (
-          <li key={i} className="text-sm text-text-secondary flex gap-3 group/item">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0 group-hover/item:scale-125 transition-transform" />
-            <span className="leading-relaxed">{item}</span>
-          </li>
-        ))}
-      </ul>
-    )
-  }
 ];
 
-interface TimelineEntry {
-  type: string;
-  title: string;
-  icon: React.ReactNode;
-  content: React.ReactNode;
-}
-
-const TimelineItem = ({ item, index }: { item: TimelineEntry, index: number }) => {
-  const isLeft = index % 2 === 0;
-
+export default function About() {
   return (
-    <div className={`relative flex items-center justify-between mb-12 md:mb-16 w-full ${isLeft ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
-      {/* Central Node */}
-      <div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 flex items-center justify-center z-10">
+    <section id="about" className="py-8 sm:py-14 relative overflow-hidden">
+      {/* Background glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
-          initial={{ scale: 0, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.2 }}
-          className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-navy border-2 border-primary flex items-center justify-center shadow-[0_0_15px_rgba(100,255,218,0.3)]"
-        >
-          <div className="text-primary scale-90">
-            {item.icon}
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Content Card */}
-      <motion.div
-        initial={{ opacity: 0, x: isLeft ? 50 : -50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
-        className={`w-full md:w-[45%] pl-14 md:pl-0 ${isLeft ? 'md:text-left' : 'md:text-left'}`}
-      >
-        <div className="p-6 rounded-3xl bg-navy-light/50 backdrop-blur-xl border border-white/5 hover:border-primary/30 transition-all group overflow-hidden relative">
-          <div className="absolute top-0 left-0 w-1 h-full bg-primary/20 group-hover:bg-primary transition-colors" />
-          <h3 className="text-xs uppercase font-black tracking-widest text-primary mb-1 opacity-60">
-            {item.type}
-          </h3>
-          <h2 className="text-xl font-bold text-white mb-4">
-            {item.title}
-          </h2>
-          <div className="text-sm md:text-base">
-            {item.content}
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Spacing for layout */}
-      <div className="hidden md:block w-[45%]" />
-    </div>
-  );
-};
-
-const About = () => {
-  return (
-    <section id="about" className="py-32 relative overflow-hidden">
-      <div className="container mx-auto px-6 relative">
-        <motion.div 
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-60px' }}
           variants={staggerContainer}
           className="max-w-6xl mx-auto"
         >
-          <motion.div variants={fadeInUp} className="text-center mb-20 md:mb-32">
-            <h2 className="text-4xl md:text-6xl font-black mb-6 text-white tracking-tight">
-              My <span className="text-primary">Legacy</span>
+          {/* Section Header */}
+          <motion.div variants={fadeInUp} className="text-center mb-10 sm:mb-12">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-bold tracking-widest uppercase text-primary mb-3">
+              Background & Philosophy
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight mb-3">
+              About <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-indigo-400 to-purple-400">Ebson Joy</span>
             </h2>
-            <p className="text-text-secondary text-lg max-w-2xl mx-auto font-light">
-              A journey of persistent learning, building, and solving complex problems.
+            <p className="text-text-secondary text-xs sm:text-sm max-w-xl mx-auto font-light leading-relaxed">
+              Passionate full-stack developer turning business requirements into scalable, secure, and intuitive web platforms.
             </p>
           </motion.div>
 
-          {/* Timeline Wrapper */}
-          <div className="relative">
-            {/* Vertical Line */}
-            <motion.div 
-              initial={{ height: 0 }}
-              whileInView={{ height: '100%' }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.5, ease: "easeInOut" }}
-              className="absolute left-[19px] md:left-1/2 md:-translate-x-1/2 top-0 w-[2px] bg-gradient-to-b from-primary via-primary/50 to-transparent" 
-            />
+          {/* Top Grid: Bio & Core Pillars */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-10 items-stretch">
+            {/* Bio Card */}
+            <motion.div
+              variants={fadeInUp}
+              className="lg:col-span-7 p-6 sm:p-7 rounded-2xl bg-navy-light/60 backdrop-blur-xl border border-white/10 shadow-xl flex flex-col justify-between"
+            >
+              <div>
+                <h3 className="text-lg sm:text-xl font-black text-white mb-3">
+                  Engineering Resilient Digital Systems
+                </h3>
+                <p className="text-text-secondary text-xs sm:text-sm leading-relaxed font-light mb-4">
+                  {personalInfo.summary}
+                </p>
+                <p className="text-text-secondary text-xs sm:text-sm leading-relaxed font-light mb-4">
+                  Over the past 2+ years, I have engineered production solutions across diverse domains—including UAE visa processing platforms, real-time video/audio calling SaaS, and luxury e-commerce. I focus on end-to-end quality, from schema design and API performance to responsive frontend user experiences.
+                </p>
+              </div>
 
-            {/* Timeline Items */}
-            <div className="relative">
-              {timelineData.map((item, index) => (
-                <TimelineItem key={index} item={item} index={index} />
+              {/* Badges */}
+              <div className="flex flex-wrap gap-2 pt-4 border-t border-white/10">
+                <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-text-primary">
+                  <MapPin className="w-3 h-3 text-primary" />
+                  <span>{personalInfo.location}</span>
+                </div>
+                <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-text-primary">
+                  <MapPin className="w-3 h-3 text-primary" />
+                  <span>{personalInfo.internationalExp}</span>
+                </div>
+                <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-medium text-primary">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                  <span>Available for Hire</span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Core Pillars */}
+            <motion.div variants={fadeInUp} className="lg:col-span-5 flex flex-col gap-3">
+              {corePillars.map((pillar, i) => (
+                <div
+                  key={i}
+                  className="p-4 sm:p-5 rounded-2xl bg-navy-light/40 backdrop-blur-md border border-white/5 hover:border-primary/30 transition-all flex-1"
+                >
+                  <div className="flex items-center gap-2.5 mb-1.5">
+                    <div className="p-1.5 rounded-lg bg-primary/10 text-primary">
+                      <pillar.icon className="w-3.5 h-3.5" />
+                    </div>
+                    <h4 className="text-sm font-bold text-white">{pillar.title}</h4>
+                  </div>
+                  <p className="text-xs text-text-secondary leading-relaxed font-light">
+                    {pillar.description}
+                  </p>
+                </div>
               ))}
-            </div>
+            </motion.div>
+          </div>
+
+          {/* Education & Highlights Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Education Card */}
+            <motion.div
+              variants={fadeInUp}
+              className="p-6 sm:p-7 rounded-2xl bg-navy-light/60 backdrop-blur-xl border border-white/10 shadow-lg relative overflow-hidden"
+            >
+              <div className="flex items-center gap-2.5 mb-4">
+                <div className="p-2 rounded-xl bg-primary/10 text-primary">
+                  <GraduationCap className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-base sm:text-lg font-bold text-white">Education</h3>
+                  <p className="text-[11px] text-text-muted">Academic Foundation</p>
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                  <h4 className="text-sm font-bold text-white">{education.degree}</h4>
+                  <p className="text-xs font-semibold text-primary mt-0.5">{education.institution}</p>
+                  <div className="flex items-center gap-3 mt-1.5 text-[11px] text-text-muted font-mono">
+                    <span className="flex items-center gap-1">
+                      <Calendar className="w-3 h-3" /> {education.period}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <MapPin className="w-3 h-3 text-primary/80" /> {education.location}
+                    </span>
+                  </div>
+                  <p className="text-xs text-text-secondary mt-2 leading-relaxed font-light">
+                    {education.description}
+                  </p>
+                </div>
+
+                <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                  <div className="flex items-center gap-2 mb-0.5">
+                    <Award className="w-3.5 h-3.5 text-primary" />
+                    <h4 className="text-sm font-bold text-white">Full-Stack Web Development</h4>
+                  </div>
+                  <p className="text-xs font-semibold text-primary">Brototype (Training & Projects)</p>
+                  <div className="flex items-center gap-3 mt-1.5 text-[11px] text-text-muted font-mono">
+                    <span className="flex items-center gap-1">
+                      <Calendar className="w-3 h-3" /> Dec 2023 - Jul 2025
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <MapPin className="w-3 h-3 text-primary/80" /> Kerala, India
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Achievements Card */}
+            <motion.div
+              variants={fadeInUp}
+              className="p-6 sm:p-7 rounded-2xl bg-navy-light/60 backdrop-blur-xl border border-white/10 shadow-lg"
+            >
+              <div className="flex items-center gap-2.5 mb-4">
+                <div className="p-2 rounded-xl bg-primary/10 text-primary">
+                  <Award className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-base sm:text-lg font-bold text-white">Career Highlights</h3>
+                  <p className="text-[11px] text-text-muted">Key Milestones & Deliveries</p>
+                </div>
+              </div>
+
+              <ul className="space-y-2.5">
+                {achievements.map((item, i) => (
+                  <li
+                    key={i}
+                    className="p-3 rounded-xl bg-white/[0.02] border border-white/5 flex items-start gap-2.5 text-xs text-text-secondary leading-relaxed group hover:border-primary/30 transition-colors"
+                  >
+                    <CheckCircle className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           </div>
         </motion.div>
       </div>
     </section>
   );
-};
-
-export default About;
+}

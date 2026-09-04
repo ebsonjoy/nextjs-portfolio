@@ -11,39 +11,46 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#5CA275', // Primary Accent
-          hover: '#6EB78A',   // Hover Bg
-          foreground: '#0F1A14' // Text on Primary
+          DEFAULT: '#38BDF8', // Electric Cyan
+          hover: '#0EA5E9',   // Vivid Sky Blue
+          foreground: '#0B0F19' // Deep dark contrast text
         },
         navy: {
-          DEFAULT: '#0F1A14', // Main Background (Deep green-black)
-          light: '#16261D',   // Section Background
-          alt: '#1E3327',     // Alt Background (hover/dividers)
+          DEFAULT: '#0B0F19', // Main Dark Canvas (Midnight Slate)
+          light: '#111827',   // Card Surface Background
+          alt: '#1E293B',     // Highlight/Divider Surface
+          border: 'rgba(255, 255, 255, 0.08)',
         },
         accent: {
-          from: '#3E7A56', // Accent Dark
-          to: '#7FBE98',   // Accent Light
+          from: '#38BDF8', // Cyan 400
+          via: '#6366F1',  // Indigo 500
+          to: '#A855F7',   // Purple 500
         },
         text: {
-          primary: '#EAF5EF',   // Heading Text (Soft white)
-          secondary: '#BFDCCD', // Body Text (Muted green-gray)
-          muted: '#8FB8A2',     // Muted Text (Low emphasis)
+          primary: '#F8FAFC',   // Heading Text (Pure Crisp White)
+          secondary: '#CBD5E1', // Body Text (Soft Slate)
+          muted: '#94A3B8',     // Muted Text (Low emphasis)
         },
         link: {
-          DEFAULT: '#7FBE98',
-          hover: '#5CA275',
+          DEFAULT: '#38BDF8',
+          hover: '#818CF8',
         }
       },
+      fontFamily: {
+        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-mono)', 'monospace'],
+      },
       boxShadow: {
-        'card': '0 18px 36px rgba(0,0,0,0.45)',
-        'glow': '0 0 20px rgba(92,162,117,0.25)',
+        'card': '0 20px 40px -15px rgba(0,0,0,0.7)',
+        'glow': '0 0 25px rgba(56,189,248,0.25)',
+        'glow-purple': '0 0 25px rgba(168,85,247,0.25)',
       },
       borderRadius: {
-        'card': '16px',
+        'card': '20px',
       },
       animation: {
-        'gradient': 'gradient 8s linear infinite',
-        'pulse': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'gradient': 'gradient 8s ease infinite',
+        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       keyframes: {
         gradient: {
@@ -59,6 +66,5 @@ export default {
       },
     },
   },
-  
   plugins: [],
 } satisfies Config;
