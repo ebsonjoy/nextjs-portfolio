@@ -6,8 +6,8 @@ import { personalInfo } from "@/lib/data";
 
 const items = [
   ["projects", "Work"],
-  ["about", "About"],
   ["experience", "Experience"],
+  ["about", "About"],
   ["contact", "Contact"],
 ];
 
@@ -22,6 +22,7 @@ export default function Navbar() {
       });
       setActive(current?.[0] ?? "");
     };
+    update();
     window.addEventListener("scroll", update, { passive: true });
     const close = (event: KeyboardEvent) => {
       if (event.key === "Escape") setOpen(false);
@@ -35,14 +36,17 @@ export default function Navbar() {
   return (
     <header className="site-header">
       <div className="reading-progress" aria-hidden="true" />
-      <div className="page-width nav-inner">
+      <div className="nav-inner">
         <a
           href="#home"
-          className="wordmark"
+          className="nav-brand"
           aria-label="Ebson Joy home"
           onClick={() => setOpen(false)}
         >
-          ebson<span>.</span>
+          <span className="wordmark">
+            ebson<span>.</span>
+          </span>
+          <span className="nav-brand-label">DEVELOPER & MAKER</span>
         </a>
         <nav aria-label="Main navigation" className="desktop-nav">
           {items.map(([id, label]) => (
@@ -56,23 +60,28 @@ export default function Navbar() {
             </a>
           ))}
         </nav>
-        <a
-          className="nav-resume"
-          href={personalInfo.resumeUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Résumé <ArrowUpRight size={16} />
-        </a>
-        <button
-          className="menu-toggle"
-          aria-label={open ? "Close navigation" : "Open navigation"}
-          aria-expanded={open}
-          aria-controls="mobile-navigation"
-          onClick={() => setOpen(!open)}
-        >
-          {open ? <X /> : <Menu />}
-        </button>
+        <div className="nav-actions">
+          <a
+            className="nav-resume"
+            href={personalInfo.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Résumé{" "}
+            <span className="nav-resume-icon">
+              <ArrowUpRight size={15} />
+            </span>
+          </a>
+          <button
+            className="menu-toggle"
+            aria-label={open ? "Close navigation" : "Open navigation"}
+            aria-expanded={open}
+            aria-controls="mobile-navigation"
+            onClick={() => setOpen(!open)}
+          >
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
       {open && (
         <nav

@@ -13,9 +13,6 @@ export default function Hero() {
     <section id="home" className="hero page-width">
       <div className="hero-grid">
         <div className="hero-copy">
-          <div className="availability">
-            <span className="status-dot" /> Available for opportunities
-          </div>
           <p className="hero-intro">
             EBSON JOY / FULL-STACK DEVELOPER <span className="intro-line" />
           </p>
