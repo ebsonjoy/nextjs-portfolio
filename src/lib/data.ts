@@ -2,14 +2,21 @@ export interface Project {
   id: string;
   title: string;
   category: string;
+  categoryType: 'frontend' | 'backend' | 'fullstack' | 'cloud' | 'mobile';
   description: string;
+  problem?: string;
+  role?: string;
+  technicalDecision?: string;
+  outcome?: string;
+  solution?: string;
   features: string[];
   tags: string[];
   imageUrl: string;
-  githubUrl: string;
+  githubUrl?: string;
   liveUrl?: string;
   videoDemoUrl?: string;
   architectureHighlight?: string;
+  isCaseStudy?: boolean;
 }
 
 export interface Experience {
@@ -18,7 +25,7 @@ export interface Experience {
   company: string;
   period: string;
   location: string;
-  type: string;
+  type?: string;
   description: string;
   highlights: string[];
   skills: string[];
@@ -31,71 +38,73 @@ export const personalInfo = {
   email: 'ebsonjoy721@gmail.com',
   phone: '+91 9747277851',
   location: 'Kerala, India',
-  internationalExp: 'Dubai, UAE Experience',
+  internationalExp: 'Dubai, UAE experience',
   website: 'https://www.ebson.online',
   github: 'https://github.com/ebsonjoy',
   linkedin: 'https://linkedin.com/in/ebson-joy',
   resumeUrl: '/Ebson_Joy.pdf',
+  headline: 'Full-Stack Developer building scalable web applications, real-time backends, and cloud-deployed client portals.',
   summary:
-    'Full-Stack Developer with 2+ years of experience building scalable, secure, high-performance web applications. Proficient in Next.js, React, Node.js, NestJS, and Supabase, with focus on clean architecture, REST API design, authentication and payment integration, cloud deployment, and real-time features.',
-  shortBio:
-    'Full-stack engineer specialized in crafting high-performance digital architectures with Next.js, Node.js, NestJS, and Supabase. Experienced in UAE enterprise solutions, real-time communication systems, and scalable payment workflows.',
+    "I'm a Full-Stack Developer specializing in TypeScript, Next.js, Node.js/NestJS, and cloud infrastructure. Over the past 2+ years, I've built and delivered production software for UAE enterprises and international clients — including real-time communication backends, role-based visa portals, and secure payment workflows. I care deeply about clean modular architecture, API performance, and building interfaces that users genuinely enjoy using.",
 };
+
+export const stats = [
+  { value: '2+', label: 'Years Experience' },
+  { value: '6+', label: 'Production & Core Projects' },
+  { value: '3+', label: 'Production Deployments' },
+];
 
 export const experiences: Experience[] = [
   {
     id: 'atr-group',
     role: 'Web Developer',
     company: 'ATR GROUP',
-    period: 'Jan 2026 - Present',
+    period: 'Jan 2026 – Present',
     location: 'Remote / India',
-    type: 'Full-time',
     current: true,
     description:
-      'Leading full-stack development of enterprise web applications and customer-facing digital portals using Next.js and Node.js.',
+      'Developing production full-stack web applications, custom internal tools, and client platforms with payment integrations.',
     highlights: [
-      'Architected scalable web applications using Next.js, React.js, Node.js, and TypeScript',
-      'Built high-performance REST APIs, authentication pipelines, analytical dashboards, and database integrations',
-      'Integrated Stripe and third-party payment workflows and webhook automation',
-      'Orchestrated cloud deployments and continuous delivery pipelines on Vercel and AWS',
+      'Architected full-stack features using Next.js, React, Node.js, and TypeScript with focus on maintainability',
+      'Built and integrated REST APIs, authentication flows, admin dashboards, and database schemas',
+      'Integrated Stripe payment gateways, automated webhook event handlers, and transaction reconciliations',
+      'Managed cloud deployments and monitoring on Vercel and AWS infrastructure',
     ],
-    skills: ['Next.js', 'React.js', 'Node.js', 'TypeScript', 'Stripe', 'AWS', 'Vercel', 'REST APIs'],
+    skills: ['Next.js', 'React', 'Node.js', 'TypeScript', 'Stripe', 'AWS', 'Vercel', 'REST APIs'],
   },
   {
     id: 'al-qoba',
     role: 'Web Developer',
     company: 'Al Qoba Al Zahabia Technology',
-    period: 'Aug 2025 - Dec 2025',
+    period: 'Aug 2025 – Dec 2025',
     location: 'Dubai, UAE',
-    type: 'Full-time',
     current: false,
     description:
-      'Developed high-availability production applications and SaaS portals for clients in the UAE market.',
+      'Engineered client management portals and production web platforms tailored for UAE enterprise operations.',
     highlights: [
-      'Developed production applications using Next.js, NestJS, TypeScript, and React.js',
-      'Engineered normalized database schemas, secure REST APIs, and granular Role-Based Access Control (RBAC)',
-      'Integrated Supabase and Stripe including end-to-end payment workflows, webhooks, and subscription triggers',
-      'Deployed applications using Vercel and AWS, proactively monitoring and resolving production issues',
+      'Delivered full-stack applications using Next.js, NestJS, TypeScript, and React with responsive UI',
+      'Implemented Supabase PostgreSQL schemas with Row-Level Security (RLS) and multi-tenant RBAC',
+      'Engineered Stripe payment checkouts, webhook triggers, and automated document validation states',
+      'Deployed production services across AWS and Vercel, proactively resolving performance bottlenecks',
     ],
-    skills: ['Next.js', 'NestJS', 'TypeScript', 'React.js', 'Supabase', 'Stripe', 'PostgreSQL', 'AWS'],
+    skills: ['Next.js', 'NestJS', 'TypeScript', 'React', 'Supabase', 'Stripe', 'PostgreSQL', 'AWS'],
   },
   {
     id: 'brototype',
     role: 'Full-Stack Web Development',
-    company: 'Brototype (Training & Projects)',
-    period: 'Dec 2023 - Jul 2025',
+    company: 'Brototype',
+    period: 'Dec 2023 – Jul 2025',
     location: 'Kerala, India',
-    type: 'Intensive Training',
     current: false,
     description:
-      'Completed comprehensive full-stack software development training with intensive hands-on production project architecture.',
+      'Completed intensive engineering program building hands-on production-grade distributed architectures and real-time platforms.',
     highlights: [
-      'Engineered end-to-end projects with Node.js, Express.js, NestJS, React.js, and MongoDB',
-      'Built robust REST APIs with JWT, OAuth 2.0, and Role-Based Access Control (RBAC)',
-      'Developed low-latency real-time communication features using Socket.IO and WebRTC',
-      'Deployed production projects on AWS EC2 with Nginx reverse proxy and PM2 process management',
+      'Constructed complete full-stack web applications using Node.js, Express.js, NestJS, React, and MongoDB',
+      'Implemented robust authentication schemes (JWT, OAuth 2.0, refresh token rotations, and RBAC)',
+      'Built low-latency real-time communication modules using Socket.IO, WebSockets, and WebRTC',
+      'Configured production Linux deployments on AWS EC2 with Nginx reverse proxies and PM2 process management',
     ],
-    skills: ['Node.js', 'Express.js', 'NestJS', 'React.js', 'MongoDB', 'WebSockets', 'WebRTC', 'AWS', 'Docker'],
+    skills: ['Node.js', 'Express.js', 'NestJS', 'React', 'MongoDB', 'Socket.IO', 'WebRTC', 'AWS'],
   },
 ];
 
@@ -103,248 +112,207 @@ export const projects: Project[] = [
   {
     id: 'mint-talk',
     title: 'Mint Talk',
-    category: 'Real-Time & SaaS',
+    category: 'Real-Time SaaS',
+    categoryType: 'backend',
+    isCaseStudy: true,
     description:
-      'A high-performance real-time communication and monetization platform featuring audio/video calling, live interactive chat, wallet/points economy, and a comprehensive admin management dashboard.',
+      'Real-time communication and creator monetization platform featuring low-latency audio/video calling, live chat rooms, and a virtual points economy.',
+    problem:
+      'Users needed dependable, low-latency audio/video streaming paired with interactive live tipping and host monetization without stream interruptions during network spikes.',
+    role: 'Full-Stack Developer & Backend Lead',
+    technicalDecision:
+      'Decoupled media transmission from app business logic by utilizing Agora RTC SDK for ultra-low latency streams, Redis pub/sub for instant room presence, and webhook-driven transaction reconciliation for virtual wallet balances.',
+    outcome:
+      'Achieved stable sub-200ms audio/video streams, zero-disruption live chat rooms, and secure multi-currency transaction processing with Stripe and Razorpay.',
     architectureHighlight:
-      'Event-driven Node.js & Socket.IO backend with Agora RTC for ultra-low latency audio/video streams, Redis pub/sub caching, and dual-gateway payment reconciliation.',
+      'Node.js & Express REST API with Agora RTC SDK for media routing, Redis pub/sub for real-time presence, and webhook-driven transaction reconciliation.',
     features: [
-      'Real-time audio & video calling powered by Agora RTC SDK',
-      'Low-latency interactive chat and presence tracking with Socket.IO',
-      'Virtual wallet and points monetization mechanism for host tipping & services',
-      'Dual payment integration with Stripe and Razorpay',
-      'Complete admin dashboard for monitoring users, hosts, call quality, and financial transactions',
+      'Sub-200ms real-time audio and video calling powered by Agora RTC SDK',
+      'Instant messaging and interactive room chat using Socket.IO',
+      'Virtual wallet and points system for tipping and creator payouts',
+      'Multi-gateway payment support via Razorpay and Stripe with webhook listeners',
+      'Comprehensive admin portal for monitoring user activity, stream health, and transactions',
     ],
     tags: [
       'Node.js',
       'Express.js',
       'MongoDB',
-      'Redis',
       'Socket.IO',
       'Agora RTC',
-      'Stripe',
+      'Redis',
       'Razorpay',
-      'React.js',
-      'Tailwind CSS',
+      'Stripe',
+      'React',
     ],
     imageUrl: '/images/mint-talk.jpg',
     githubUrl: 'https://github.com/ebsonjoy',
-    liveUrl: 'https://www.ebson.online',
   },
   {
     id: 'atr-dubai-visa',
     title: 'ATR Dubai Visa Platform',
-    category: 'Full Stack Enterprise',
+    category: 'Enterprise Platform',
+    categoryType: 'fullstack',
+    isCaseStudy: true,
     description:
-      'A production-ready visa application and management platform engineered for a UAE client with multi-tier staff roles, live applicant pipelines, document verification, and automated payments.',
+      'Production visa application portal for UAE travel applicants, featuring automated intake workflows, document review pipelines, and secure payment processing.',
+    problem:
+      'Manual visa application handling caused operational bottlenecks, lost document attachments, and high customer support volume due to lack of applicant tracking visibility.',
+    role: 'Full-Stack Developer (ATR Group)',
+    technicalDecision:
+      'Built a Next.js App Router application backed by Supabase PostgreSQL with strict Row-Level Security (RLS) policies and Role-Based Access Control (RBAC) to isolate applicant data, paired with automated Stripe webhook listeners for instant lifecycle status updates.',
+    outcome:
+      'Eliminated manual spreadsheet tracking, cut document review turnaround time, and enabled applicants to track application status self-service in real time.',
     architectureHighlight:
-      'Next.js App Router with Supabase PostgreSQL, Row-Level Security (RLS), RBAC permissions, and automated Stripe webhooks for instant status transitions.',
+      'Next.js App Router with Supabase PostgreSQL Row-Level Security (RLS), RBAC permissions, and automated Stripe webhooks for instant application status transitions.',
     features: [
-      'Automated visa applicant intake and document verification pipeline',
-      'Staff Role-Based Access Control (RBAC) for agents, reviewers, and admins',
-      'Seamless Stripe payment workflows with real-time webhook handlers',
-      'Interactive application tracking system with automated applicant email notifications',
-      'Executive analytics on application volumes, approvals, and transaction logs',
+      'Applicant intake portal with document uploads and client-side format validation',
+      'Multi-tiered Role-Based Access Control (RBAC) for applicants, visa officers, and administrators',
+      'Stripe payment gateway integration with real-time webhook status synchronization',
+      'Live application status tracking timeline and automated email alerts',
+      'Admin operations dashboard with search, filtering, and revenue reporting',
     ],
-    tags: ['Next.js', 'TypeScript', 'Supabase', 'PostgreSQL', 'Stripe', 'Tailwind CSS', 'Vercel'],
+    tags: ['Next.js', 'TypeScript', 'Supabase', 'PostgreSQL', 'Stripe', 'AWS', 'Tailwind CSS'],
     imageUrl: '/images/dubai-visa.jpg',
     githubUrl: 'https://github.com/ebsonjoy',
-    liveUrl: 'https://www.ebson.online',
   },
   {
     id: 'imperial-avo',
     title: 'Imperial Avo',
-    category: 'E-Commerce',
+    category: 'E-Commerce Platform',
+    categoryType: 'fullstack',
+    isCaseStudy: true,
     description:
-      'A bespoke e-commerce platform delivering high-speed product discovery, seamless checkout, automated SMS order updates via Twilio, and centralized inventory management.',
+      'Modern direct-to-consumer e-commerce storefront featuring instant search, Stripe checkout sessions, and automated SMS dispatch updates.',
+    problem:
+      'The client needed a custom digital storefront capable of handling surge sales without stock over-allocation, plus automated SMS dispatch notifications to reduce support tickets.',
+    role: 'Full-Stack Developer',
+    technicalDecision:
+      'Constructed a Next.js store powered by Supabase PostgreSQL transactional inventory locking during checkout, integrated with Stripe Checkout sessions and Twilio SMS event webhooks.',
+    outcome:
+      'Zero inventory overselling during product drops and automated 100% order confirmation and shipping dispatch notifications sent directly to buyers via SMS.',
     architectureHighlight:
-      'Next.js frontend with Supabase database, Stripe checkout integration, and Twilio event triggers for real-time dispatch and delivery updates.',
+      'Next.js storefront with Supabase PostgreSQL inventory locks, Stripe payment intents, and Twilio event hooks for dispatch updates.',
     features: [
-      'Catalog management with instant search, filtering, and stock synchronization',
-      'Frictionless cart, checkout, and secure Stripe payment processing',
-      'Automated SMS order updates and tracking notifications via Twilio API',
-      'Administrative fulfillment dashboard for orders, sales analytics, and catalog updates',
-      'Fully responsive, mobile-first luxury e-commerce interface',
+      'Product catalog with real-time search, category filtering, and accurate stock counts',
+      'Optimized shopping cart and seamless Stripe checkout integration',
+      'Automated SMS order dispatch and tracking notifications via Twilio API',
+      'Admin management portal for order fulfillment, inventory adjustments, and sales summaries',
     ],
-    tags: ['Next.js', 'Node.js', 'Supabase', 'Stripe', 'Twilio', 'Tailwind CSS', 'TypeScript'],
+    tags: ['Next.js', 'TypeScript', 'Node.js', 'Supabase', 'Stripe', 'Twilio', 'Tailwind CSS'],
     imageUrl: '/images/imperial-avo.jpg',
     githubUrl: 'https://github.com/ebsonjoy',
-    liveUrl: 'https://www.ebson.online',
   },
   {
     id: 'aadhaar-ocr',
-    title: 'Aadhaar OCR System',
-    category: 'OCR & AI',
+    title: 'Aadhaar OCR Verification System',
+    category: 'OCR & Document Processing',
+    categoryType: 'frontend',
+    isCaseStudy: false,
     description:
-      'An automated OCR document processing application built with the MERN stack that accurately extracts, validates, and displays user identity details from Aadhaar card images.',
-    architectureHighlight:
-      'Computer vision text extraction pipeline integrated with Express.js REST API and reactive client-side preview in Next.js/React.',
+      'Automated document processing platform that extracts, cleans, and validates structured identity information from identity documents.',
     features: [
-      'Front and back document upload with instant browser preview',
-      'Automated OCR processing pipeline with structured regex data extraction',
-      'Extraction of Name, DOB, Gender, and Aadhaar identification numbers',
-      'Clean data presentation layout with copy-to-clipboard and export tools',
+      'Front and back document upload with instantaneous client-side preview',
+      'OCR processing pipeline with structured regex field extraction for Name, DOB, Gender, and ID number',
+      'Confidence score verification and validation checks',
+      'Clean data presentation with one-click copy-to-clipboard functionality',
     ],
-    tags: ['Next.js', 'React', 'Node.js', 'Express.js', 'OCR', 'Tailwind CSS', 'Vite'],
+    tags: ['Next.js', 'React', 'Node.js', 'Express.js', 'MongoDB', 'OCR Pipeline', 'Tailwind CSS'],
     imageUrl: '/images/Aadhaar OCR System.jpg',
     githubUrl: 'https://github.com/ebsonjoy/aadhaar-ocr-frontend.git',
-    liveUrl: 'https://www.ebson.online',
   },
   {
     id: 'coupids-court',
     title: 'Coupids Court',
-    category: 'Real-Time',
+    category: 'Real-Time Social Platform',
+    categoryType: 'backend',
+    isCaseStudy: false,
     description:
-      'A feature-rich dating and networking platform with distance-based matchmaking, real-time messaging, WebRTC video calling, and premium monetization.',
-    architectureHighlight:
-      'Clean Repository Pattern backend in TypeScript & Node.js, MongoDB geospatial indexing for distance queries, and WebRTC peer negotiation.',
+      'Social networking platform featuring distance-based geospatial matchmaking queries, real-time messaging, and peer-to-peer video calling.',
     features: [
-      'Geospatial distance-based matchmaking algorithm',
-      'Direct real-time chat and WebRTC audio/video calling',
-      'Premium subscription plans and Razorpay payment integration',
-      'Secure JWT authentication, bcrypt password hashing, and profile verification',
+      'Geospatial distance-based matchmaking queries using MongoDB 2dsphere indexing',
+      'Peer-to-peer WebRTC video and audio calling with custom signaling',
+      'Real-time messaging with live delivery indicators via Socket.IO',
+      'Secure authentication with JWT, bcrypt password hashing, and token refresh',
     ],
-    tags: ['Node.js', 'Express.js', 'TypeScript', 'MongoDB', 'React', 'WebRTC', 'Socket.IO', 'Tailwind CSS'],
+    tags: ['Node.js', 'Express.js', 'TypeScript', 'WebRTC', 'Socket.IO', 'MongoDB', 'React'],
     imageUrl: '/images/dating_web.png',
     githubUrl: 'https://github.com/ebsonjoy/Coupids_Court',
   },
   {
     id: 'read-realm',
-    title: 'ReadRealm Article Feeds',
-    category: 'Full Stack',
+    title: 'ReadRealm',
+    category: 'Content Publishing Platform',
+    categoryType: 'frontend',
+    isCaseStudy: false,
     description:
-      'A personalized content publishing platform where readers subscribe to custom categories (tech, science, politics) and creators publish rich articles.',
-    architectureHighlight:
-      'Full REST API architecture with MongoDB aggregation for customized feed rankings and Redux Toolkit state synchronization.',
+      'Personalized article publishing platform with category-based content aggregation, reader bookmarks, and creator publishing workflows.',
     features: [
-      'Personalized dynamic feed based on selected topic preferences',
-      'Full CRUD publishing tools with markdown and image hosting support',
-      'Interactive like, dislike, bookmark, and content blocking controls',
-      'User authentication with email and phone verification',
+      'Personalized dynamic feed powered by MongoDB aggregation pipelines',
+      'Full CRUD publishing tools with markdown authoring and image uploads',
+      'Article bookmarking, likes, comments, and engagement tracking',
+      'Client state synchronization with Redux Toolkit',
     ],
-    tags: ['React', 'Redux Toolkit', 'Node.js', 'Express.js', 'MongoDB', 'Tailwind CSS', 'Vite'],
+    tags: ['React', 'Redux Toolkit', 'Node.js', 'Express.js', 'MongoDB', 'Tailwind CSS'],
     imageUrl: '/images/article_feeds.jpg',
     githubUrl: 'https://github.com/ebsonjoy/ReadRealm-.git',
   },
 ];
 
-export const skillCategories = [
+export const technicalStack = {
+  frontend: {
+    title: 'Frontend & UI',
+    tag: 'Client-Side',
+    skills: ['Next.js', 'React', 'TypeScript', 'JavaScript (ES6+)', 'Tailwind CSS', 'Redux Toolkit', 'HTML5 / CSS3'],
+  },
+  backend: {
+    title: 'Backend & Real-Time',
+    tag: 'Server & APIs',
+    skills: ['Node.js', 'NestJS', 'Express.js', 'RESTful APIs', 'Socket.IO', 'WebRTC', 'JWT & OAuth'],
+  },
+  databaseCloud: {
+    title: 'Database & Cloud',
+    tag: 'Data & Infra',
+    skills: ['Supabase', 'PostgreSQL', 'MongoDB', 'Redis', 'AWS (EC2/S3)', 'Docker', 'Vercel'],
+  },
+  paymentsIntegrations: {
+    title: 'Integrations & Tools',
+    tag: 'DevOps & Services',
+    skills: ['Stripe', 'Razorpay', 'Twilio API', 'Agora RTC', 'Git & GitHub', 'Postman', 'Nginx & PM2'],
+  },
+};
+
+export const engineeringPrinciples = [
   {
-    title: 'Languages & Frontend',
-    description: 'Modern, reactive client-side technologies & typed systems',
-    skills: [
-      { name: 'TypeScript', level: 92 },
-      { name: 'JavaScript', level: 95 },
-      { name: 'Next.js', level: 92 },
-      { name: 'React.js', level: 94 },
-      { name: 'Tailwind CSS', level: 94 },
-      { name: 'Redux Toolkit', level: 86 },
-      { name: 'HTML5 / CSS3', level: 96 },
-      { name: 'Framer Motion', level: 84 },
-    ],
+    number: '01',
+    title: 'Clean Modular Architecture',
+    description:
+      'Maintainable codebases, strict TypeScript interfaces, reusable UI components, and decoupled backend services that scale predictably.',
   },
   {
-    title: 'Backend & Architecture',
-    description: 'Scalable server-side frameworks, microservices & APIs',
-    skills: [
-      { name: 'Node.js', level: 92 },
-      { name: 'NestJS', level: 86 },
-      { name: 'Express.js', level: 92 },
-      { name: 'RESTful API Design', level: 96 },
-      { name: 'Socket.IO', level: 90 },
-      { name: 'WebSockets', level: 88 },
-      { name: 'WebRTC', level: 82 },
-      { name: 'Clean Architecture', level: 90 },
-    ],
+    number: '02',
+    title: 'Performance & Low Latency',
+    description:
+      'Optimized database queries, smart caching layers, low-latency real-time protocols (Socket.IO/WebRTC), and lightweight client bundles.',
   },
   {
-    title: 'Databases & Cloud',
-    description: 'Data persistence, cloud infrastructure & containerization',
-    skills: [
-      { name: 'MongoDB', level: 90 },
-      { name: 'PostgreSQL', level: 86 },
-      { name: 'Supabase', level: 90 },
-      { name: 'SQL', level: 86 },
-      { name: 'AWS (S3 / EC2)', level: 80 },
-      { name: 'Docker', level: 80 },
-      { name: 'Vercel', level: 92 },
-      { name: 'Linux / PM2 / Nginx', level: 84 },
-    ],
-  },
-  {
-    title: 'Security, Payments & Tools',
-    description: 'Authentication, payment gateways, RTC & developer tooling',
-    skills: [
-      { name: 'JWT & OAuth', level: 92 },
-      { name: 'RBAC Access Control', level: 92 },
-      { name: 'Stripe Payments & Webhooks', level: 92 },
-      { name: 'Razorpay Integration', level: 90 },
-      { name: 'Agora RTC SDK', level: 84 },
-      { name: 'Twilio API', level: 84 },
-      { name: 'Git & GitHub', level: 94 },
-      { name: 'Postman & Testing', level: 90 },
-    ],
+    number: '03',
+    title: 'Production Resilience',
+    description:
+      'Secure authentication, transactional payment webhooks, defensive error handling, and robust cloud deployments on AWS and Vercel.',
   },
 ];
 
-// Backwards-compatible skills object for existing imports
-export const skills = {
-  frontend: [
-    { name: 'Next.js', level: 92 },
-    { name: 'React', level: 94 },
-    { name: 'TypeScript', level: 92 },
-    { name: 'JavaScript', level: 95 },
-    { name: 'Tailwind CSS', level: 94 },
-    { name: 'Redux Toolkit', level: 86 },
-    { name: 'HTML', level: 96 },
-    { name: 'CSS', level: 90 },
-    { name: 'Framer Motion', level: 84 },
-  ],
-  backend: [
-    { name: 'Node.js', level: 92 },
-    { name: 'NestJS', level: 86 },
-    { name: 'Express', level: 92 },
-    { name: 'REST API', level: 96 },
-    { name: 'MongoDB', level: 90 },
-    { name: 'PostgreSQL', level: 86 },
-    { name: 'Supabase', level: 90 },
-    { name: 'SQL', level: 86 },
-    { name: 'Stripe', level: 92 },
-    { name: 'Razorpay', level: 90 },
-    { name: 'JWT', level: 92 },
-    { name: 'Socket.io', level: 90 },
-    { name: 'WebSockets', level: 88 },
-  ],
-  tools: [
-    { name: 'AWS', level: 80 },
-    { name: 'Docker', level: 80 },
-    { name: 'Git', level: 94 },
-    { name: 'Vercel', level: 92 },
-    { name: 'Postman', level: 90 },
-    { name: 'VS Code', level: 95 },
-  ],
-};
-
-export const education = {
-  degree: 'Bachelor of Science, Computer Science',
-  institution: 'Kannur University',
-  period: 'Jan 2019 - Jan 2023',
-  location: 'Kannur, India',
-  description:
-    'Studied core computer science principles including algorithms, data structures, relational database management, operating systems, and object-oriented software engineering.',
-};
-
-export const stats = [
-  { value: '2+', label: 'Years Experience' },
-  { value: '10+', label: 'Full-Stack Projects' },
-  { value: '3+', label: 'Production Deployments' },
-  { value: '100%', label: 'Delivery & Reliability' },
-];
-
-export const achievements = [
-  'Architected enterprise-grade UAE Visa Application platform with granular RBAC and Stripe webhooks.',
-  'Engineered low-latency real-time audio/video communication platform with Agora RTC and Socket.IO.',
-  'Built robust RESTful architectures with NestJS, Node.js, Express, and Supabase RLS policies.',
-  'Integrated multi-gateway payment processing (Stripe & Razorpay) with resilient webhook error handling.',
-  'Deployed and optimized scalable production applications across Vercel and AWS environments.',
+export const education = [
+  {
+    degree: 'Bachelor of Science in Computer Science',
+    institution: 'Kannur University',
+    period: '2019 – 2023',
+    location: 'Kannur, India',
+  },
+  {
+    degree: 'Full-Stack Web Development',
+    institution: 'Brototype',
+    period: 'Dec 2023 – Jul 2025',
+    location: 'Kerala, India',
+  },
 ];
