@@ -72,23 +72,23 @@ export const experiences: Experience[] = [
     ],
     skills: ['Next.js', 'React', 'Node.js', 'TypeScript', 'Stripe', 'AWS', 'Vercel', 'REST APIs'],
   },
-  {
-    id: 'al-qoba',
-    role: 'Web Developer',
-    company: 'Al Qoba Al Zahabia Technology',
-    period: 'Aug 2025 – Dec 2025',
-    location: 'Dubai, UAE',
-    current: false,
-    description:
-      'Engineered client management portals and production web platforms tailored for UAE enterprise operations.',
-    highlights: [
-      'Delivered full-stack applications using Next.js, NestJS, TypeScript, and React with responsive UI',
-      'Implemented Supabase PostgreSQL schemas with Row-Level Security (RLS) and multi-tenant RBAC',
-      'Engineered Stripe payment checkouts, webhook triggers, and automated document validation states',
-      'Deployed production services across AWS and Vercel, proactively resolving performance bottlenecks',
-    ],
-    skills: ['Next.js', 'NestJS', 'TypeScript', 'React', 'Supabase', 'Stripe', 'PostgreSQL', 'AWS'],
-  },
+  // {
+  //   id: 'al-qoba',
+  //   role: 'Web Developer',
+  //   company: 'Al Qoba Al Zahabia Technology',
+  //   period: 'Aug 2025 – Dec 2025',
+  //   location: 'Dubai, UAE',
+  //   current: false,
+  //   description:
+  //     'Engineered client management portals and production web platforms tailored for UAE enterprise operations.',
+  //   highlights: [
+  //     'Delivered full-stack applications using Next.js, NestJS, TypeScript, and React with responsive UI',
+  //     'Implemented Supabase PostgreSQL schemas with Row-Level Security (RLS) and multi-tenant RBAC',
+  //     'Engineered Stripe payment checkouts, webhook triggers, and automated document validation states',
+  //     'Deployed production services across AWS and Vercel, proactively resolving performance bottlenecks',
+  //   ],
+  //   skills: ['Next.js', 'NestJS', 'TypeScript', 'React', 'Supabase', 'Stripe', 'PostgreSQL', 'AWS'],
+  // },
   {
     id: 'brototype',
     role: 'Full-Stack Web Development',
@@ -145,6 +145,7 @@ export const projects: Project[] = [
       'React',
     ],
     imageUrl: '/images/mint-talk.jpg',
+     liveUrl: 'https://www.minttalk.app/',
     githubUrl: 'https://github.com/ebsonjoy',
   },
   {
@@ -202,6 +203,41 @@ export const projects: Project[] = [
     imageUrl: '/images/imperial-avo.jpg',
     githubUrl: 'https://github.com/ebsonjoy',
   },
+  {
+id: 'alrukan',
+title: 'Al Rukan',
+category: 'Corporate & Product Platform',
+categoryType: 'fullstack',
+isCaseStudy: true,
+
+description:
+'Professional building materials website with product catalogs, service information, and customer enquiry flows.',
+
+problem:
+'The client needed a modern digital platform to showcase products and generate customer enquiries.',
+
+role: 'Full-Stack Developer',
+
+technicalDecision:
+'Built a responsive Next.js platform with reusable components, structured product pages, and SEO-optimized content.',
+
+outcome:
+'Delivered a modern, mobile-friendly platform for product discovery and customer enquiries.',
+
+architectureHighlight:
+'Next.js-based responsive architecture with reusable UI components and optimized product content.',
+
+features: [
+'Product catalog and detailed product pages',
+'Service and company information',
+'Customer enquiry and contact flows',
+'Responsive and SEO-friendly design'
+],
+
+tags: ['WordPress', 'Elementor', 'PHP', 'JavaScript', 'MySQL', 'HTML', 'CSS'],
+imageUrl: '/images/alrukan.png',
+liveUrl: 'https://alrukan.com/',
+},
   {
     id: 'aadhaar-ocr',
     title: 'Aadhaar OCR Verification System',
